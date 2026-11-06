@@ -36,5 +36,18 @@ vim.opt.title = true
 -- TODO: In future can be removed. I am not sure if I need this config.
 vim.opt.fillchars:append({ diff = "╱" })
 
-
-
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+-- Adding ** means “this folder and every folder inside it, all the way down.
+vim.opt.path:append("**")
+vim.opt.wildmode = { "longest:full", "full" }
+-- Files that match these patterns are skipped by file completion and :find.
+vim.opt.wildignore:append({ "*/node_modules/*", "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
+vim.opt.swapfile = false
+vim.opt.writebackup = false
+-- Saves your undo history to disk. Normally undo history is lost when you close a file. With this on, you can close a file, open it tomorrow, and still press u to undo yesterday’s changes.
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.cache/nvim/undodir")
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 0

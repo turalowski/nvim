@@ -77,3 +77,12 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
     - title **on** so the terminal tab shows the file name.
     - Diagonal `/` fill in empty diff areas
 
+### 1.4 Search, files, undo
+
+- `ignorecase` + `smartcase` **on**: case-insensitive until a capital letter is typed.
+- `path` adds `**`, so `:find` searches subfolders.
+- `:` completion: `wildmode` is `ongest:full`, `full`. `wildignore` skips `*/node_modules/*`, `*.o`, `*.obj`, `*.pyc`, `*.class`, `*.jar`.
+- `swapfile` and `writebackup` **off**. Persistent undo (`undofile` **on**) lives in `~/.cache/nvim/undodir`.
+    - Undo survives closing the file. Swap files only get in the way. 
+- Snappier timing: `updatetime` **300**, `timeoutlen` **500**, `ttimeoutlen` **0**.
+    -  Faster CursorHold events, and key sequences resolve without lag.
