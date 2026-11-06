@@ -53,3 +53,13 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
             - Each plugin group gets its own file next to it later (e.g., `ui.lua`), which configures its plugins with `require/(<plugin>).setup({...})`
             - `keymaps.lua`: every keymap that uses a plugin, required last so all plugins are setup up first. Group files hold no keymaps.
         - Lua files are indended with tabs, formatted by stylua with its defaults. 
+
+### 1.2 Leader and basics
+
+- Leader and local leader are **Space**.
+- Mouse is **off**, Keyboard-only.
+- Clipboard is `unnamedplus`, so yank and paste go through the system clipboard.
+- Indent is **2 spaces**: `tabstop`, `shiftwidth`, and `softtabstop` are all **2**, with `expandtab` and `smartindent` **on**.
+- `-` counts as part of a word, so `foo-bar` is one word.
+    - Fits CSS classes and kebab-case names.
+    
