@@ -63,3 +63,17 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - `-` counts as part of a word, so `foo-bar` is one word.
     - Fits CSS classes and kebab-case names.
     
+### 1.3 Look of the buffer
+
+- **Hybrid** line numbers: `number` + `relativenumber` **on**, so the cursor line shows its real number.
+- `cursorline` **on**. No wrap, `scrolloff` **10**, `sidescrolloff` **0**.
+- `signcolumn` **always on**.
+    - Text doesn't jump when git or diagnostics marks appear.
+    - `cmdheight` **0** and one global statusline (`laststatus` **3**).
+       - Maximizes vertical space
+    - **Rounded** borders on every float (`winborder`)
+    - Popup menu: at most **10** rows, slightly see-through, (`pumheight` **10**, `pumblend` **10**)
+    - Matching brackets flash briefly. (`showmatch` **on**, `matchtime** **2**).
+    - title **on** so the terminal tab shows the file name.
+    - Diagonal `/` fill in empty diff areas
+
