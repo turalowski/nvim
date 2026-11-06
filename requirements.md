@@ -86,3 +86,9 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
     - Undo survives closing the file. Swap files only get in the way. 
 - Snappier timing: `updatetime` **300**, `timeoutlen` **500**, `ttimeoutlen` **0**.
     -  Faster CursorHold events, and key sequences resolve without lag.
+
+### 1.5 Splits and folds
+
+- New splits open **below** and to the **right**.
+- Folds come from **Treesitter**, with `foldlevel` **99**.
+    - Everything starts unfolded, and folds can still be closed by syntax.
