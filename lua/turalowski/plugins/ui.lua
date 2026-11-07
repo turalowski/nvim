@@ -92,4 +92,5 @@ require("snacks").setup({
 	statuscolumn = { enabled = true },
 	words = { enabled = true },
 	scroll = { enabled = false },
+	picker = { enabled = true },
 })

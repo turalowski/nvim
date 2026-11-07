@@ -182,3 +182,19 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - Words: the word under the cursor is highlighted everywhere. `]]` / `[[` jump between occurrences.
 - Smooth scroll is *off**.
     - Scrolling should feel instant.
+
+## 3. Navigating
+
+### 3.1 Picker
+
+- `snacks.nvim` picker.
+
+| Keys | Action | Comment |
+| --- | --- | --- | 
+| `:f` | Finds files, including hidden ones | Dotfiles like `.github/` and `.env.example` are part ofd real projects | - | 
+| `;r` | Live-greps, including hidden files | - | 
+| `;;` | Reopens the last picker | - | 
+| `\\` | Lists open buffers | Jumps to a window that already shows the buffer. | 
+| `;e` | Lists diagnostics | - | 
+| `;n` | Shows notifications | - | 
+| `;h` | Lists git hunks | -  |
