@@ -132,3 +132,12 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 | `<leader>bx`, `<leader>bn`, `<leader>bp`, `<leader>bd` | Close current buffer, Go to next buffer, Go to previous buffer, Closes every hidden buffer, except unsaved ones. | - |
 | `<leader>R` | Reload files changed on disk | - | 
 
+### 2.0 Look & feel
+
+- `catpuccin` style **transparent** background.
+    - `solarized-osaka`, `vivid` style **transparent** background, `tokyo-night`, `onedark` should be optional, commented.
+
+### 2.2 Icons
+
+- `mini.icons`, also mocking `nvim-web-devicons`. 
+    - One icon source for every plugin.
