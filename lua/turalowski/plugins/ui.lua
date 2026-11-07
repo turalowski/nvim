@@ -57,3 +57,30 @@ require("lualine").setup({
 		lualine_z = { "location" },
 	},
 })
+
+-- File name tag in the top-right corner of each window, so every split says which file it holds.
+-- The active window's tag is pink with dark text. Colors come from the Catppuccin palette,
+-- with its Mocha values as a fallback when another theme is active.
+local ok, palettes = pcall(require, "catppuccin.palettes")
+local palette = ok and palettes.get_palette() or { pink = "#f5c2e7", crust = "#11111b" }
+require("incline").setup({
+	hide = { cursorline = true },
+	highlight = {
+		groups = {
+			InclineNormal = { guibg = palette.pink, guifg = palette.crust, gui = "bold" },
+		},
+	},
+	render = function(props)
+		local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+		if name == "" then
+			name = "[No Name]"
+		end
+		local icon, icon_hl = MiniIcons.get("file", name)
+		-- On the pink tag the icon takes the dark text color; elsewhere it keeps its own color.
+		local tag = { { icon .. " ", group = not props.focused and icon_hl or nil }, { name } }
+		if vim.bo[props.buf].modified then
+			tag[#tag + 1] = { " [+]" }
+		end
+		return tag
+	end,
+})

@@ -166,3 +166,11 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - The project root is found be searching upward for `.git`, `lua`, `package.json`, `Makefile`, `Cargo.toml`, `go.mod`, or `pyproject.toml`.
     - Refreshes on cursor move and macro start/stop.
 - The recording indicator replaces the hidden command line.
+
+### 2.5 Window labels
+
+- incline.nvim shows a filename tag with an icon in the top-right corner of each window, plus `[+]` when unsaved.
+    - With a single global statusline, each split still needs to say which file it holds.
+- The tag hides when the cursor reaches its line.
+- The active window's tag is **pink** with dark text.
+    - The icon takes the dark text color, so it stays readable on pink.
