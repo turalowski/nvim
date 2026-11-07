@@ -247,3 +247,14 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 - Inline text: `* message`, with the source only when there are several.
 - Gutter icons come from the shared icon set.
 
+### 5.3 Per-server settings
+
+- Per-erver settings live in `after/lsp/<name>.lua`.
+    - Neovim 0.12 merges these automatically, so there' no setup boilerplate.
+- vtsls:
+    - Uses the workspace Typerscript and updates imports on file move.
+    - Sever-side fuzzy matching and function-call completion.
+    - Inlay hints are short: no variable types, **30** characters max.
+- lua-l: knows the Neovim runtime, shows param-type hints, silences a few noisy checks.
+- cssls: ignores empty rules.
+- oxlint: starts with `oxlint --lsp`
