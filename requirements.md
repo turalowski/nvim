@@ -103,6 +103,7 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
     - `tiny-cmdline.nvim` shows the `:` command line as a floating box centered left to right, **20%** from the top. It's set up in `plugins/ui.lua`
         - With `cmdheight` 0 the command line needs somewhere to appear, and near the top is where  the eyes already are.
 
+### 1.7 Autocmds
 
-
-
+- Yanked text flashes briefly.
+- Only the active window shows the cursorline.
