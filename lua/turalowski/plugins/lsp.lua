@@ -24,13 +24,14 @@ require("mason-tool-installer").setup({
 	run_on_start = true,
 })
 
--- Every server is told the client supports file renames, so oil renames can update imports.
+-- Every server gets blink.cmp's completion capabilities, and is told the client supports
+-- file renames, so oil renames can update imports.
 vim.lsp.config("*", {
-	capabilities = {
+	capabilities = require("blink.cmp").get_lsp_capabilities({
 		workspace = {
 			fileOperations = { didRename = true, willRename = true },
 		},
-	},
+	}),
 })
 
 -- nvim-lspconfig supplies the defaults for each server; these turn them on.

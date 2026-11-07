@@ -32,10 +32,12 @@ vim.pack.add({
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 })
 
 require("turalowski.plugins.ui")
 require("turalowski.plugins.navigation")
 require("turalowski.plugins.syntax")
+require("turalowski.plugins.completion")
 require("turalowski.plugins.lsp")
 require("turalowski.plugins.keymaps")

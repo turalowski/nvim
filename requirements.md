@@ -258,3 +258,38 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 - lua-l: knows the Neovim runtime, shows param-type hints, silences a few noisy checks.
 - cssls: ignores empty rules.
 - oxlint: starts with `oxlint --lsp`
+
+### 5.4 Completion
+
+- `blink.cmp`, version `^1`, `enter` preset : Enter accepts.
+- Every language server from 5.1 also gets `blink.cmp's completion capabilities.
+- Auto brackets after functions. Docs pop up after **200**.
+- Menu items are colorized by `Treesitter`, with kind icons from the shared icon set.
+- Gohst text is **off**.
+    - Copilot already shows inline suggestions, and two ghost texts would clash.
+- In the command line, the menu opens by itself for `:` commands only, with nothing preselected. 
+
+
+### 5.5 LSP keymaps
+
+- Built-in Neovim 0.12 keys stay as they are. The remaps below add shorter keys on top.
+- `gd`, `E`, and `gt` replace built-in keys, so the old behaviour moves or goes away.
+
+| Keys | Action | Notes |
+| --- | --- | --- |
+| `gd` | Go to definition | Replaces the built-in "go to local declaration". `<C-]>` does the same. |
+| `E` | Show the error under the cursor in a float | Replaces "jump to end of WORD". Built-in: `<C-w>d`. |
+| `K` | Show type and docs in a float | Built-in. Press `K` again to enter the float and scroll. |
+| `gt` | Go to type definition | Replaces "next tab", which stays on `Tab` and `<leader>tn`. Built-in: `grt`. |
+| `gri` | Go to implementation | Built-in. |
+| `grr` | List references | Built-in. |
+| `grn` | Rename symbol everywhere | Built-in. |
+| `gra` | Code actions: quick fixes, missing imports | Built-in. Normal and visual mode. |
+| `grx` | Run the code lens on the current line | Built-in. |
+| `gO` | List symbols in the file | Built-in. |
+| `<C-s>` | Show function parameters while typing arguments | Built-in, insert mode. |
+| `]d` / `[d` | Next / previous diagnostic | Built-in. |
+| `]D` / `[D` | Last / first diagnostic | Built-in. |
+| `;e` | List all diagnostics in a picker | From 3.1. |
+| `<C-o>` / `<C-t>` | Jump back | Built-in. `<C-o>` after any jump, `<C-t>` after `<C-]>`. |
+| `<C-m>` | Jump forward | From 1.8. |
