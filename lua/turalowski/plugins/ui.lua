@@ -32,3 +32,28 @@ MiniIcons.mock_nvim_web_devicons()
 require("tiny-cmdline").setup({
 	position = { x = "50%", y = "20%" },
 })
+
+local statusline = turalowski.statusline
+local refresh_events = vim.list_extend(
+	vim.deepcopy(require("lualine.config").get_config().options.refresh.events),
+	{ "RecordingEnter", "RecordingLeave" }
+)
+require("lualine").setup({
+	options = {
+		theme = "auto",
+		globalstatus = true,
+		refresh = { events = refresh_events },
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch" },
+		lualine_c = {
+			statusline.root_name,
+			{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+			statusline.pretty_path,
+		},
+		lualine_x = { statusline.recording, "diagnostics", "diff" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
+})

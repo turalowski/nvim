@@ -153,3 +153,16 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - Names longer than **20** characters are cut to **17** oplus `...`
 - Unsaved tabs shows `[+]` before the icon.
 - Terminal show `[Terminal]` and empty buffers `[No Name]`, with no icon.
+
+### 2.4 Statusline
+
+- lualine, one global bar, theme `auto`.
+    - a: mode
+    - b: git branch
+    - c: project root name (only when it differs from cwd), filetype icon, pretty file path
+    - x: macro recording register, diagnostics, git diff counts
+    - y: progress
+    - z: line:column
+- The project root is found be searching upward for `.git`, `lua`, `package.json`, `Makefile`, `Cargo.toml`, `go.mod`, or `pyproject.toml`.
+    - Refreshes on cursor move and macro start/stop.
+- The recording indicator replaces the hidden command line.
