@@ -134,7 +134,7 @@
 ### 2.0 Look & feel
 
 - `catpuccin` style **transparent** background.
-  - `solarized-osaka`, `vivid` style **transparent** background, `tokyo-night`, `onedark` should be optional, commented.
+- `tokyo-night`, `onedark` should be optional, commented.
 
 ### 2.2 Icons
 
