@@ -332,3 +332,11 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
   - Useful when agents make a lot of changes in the codebase
 - Explorer: **tree** view, **50** columns wide, opens files as the cursor moves, shows +/- line stats.
 - Compact mode: only changes plus **0** context lines, with folds synced accross panes.
+
+| Keys         | Action                           | Notes |
+| ------------ | -------------------------------- | ----- |
+| `<leader>dv` | Toggles the diff view            | -     |
+| `<leader>dh` | Shows the current file's history | -     |
+| `<leader>dH` | Shows the repo history           | -     |
+
+Comment: `<leader>d` (delete without copying, 1.8) now waits for `v`, `h`, or `H`. I will revisit it later. For now, nothing is required.

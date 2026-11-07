@@ -191,3 +191,26 @@ map("n", "<leader>go", function()
 	vim.api.nvim_buf_set_name(buf, sha:sub(1, 8) .. ":" .. path)
 	vim.api.nvim_win_set_cursor(0, { tonumber(orig_lnum), 0 })
 end, { desc = "Open file at the commit of this line" })
+
+-- Diff view (codediff). Its buffers are named "CodeDiff ...", which marks a codediff tab.
+local function in_codediff_tab()
+	for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+		local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win)), ":t")
+		if name:find("^CodeDiff") then
+			return true
+		end
+	end
+	return false
+end
+
+-- TODO: <leader>d (delete without copying, config/keymaps.lua) now waits up to timeoutlen
+-- for v, h or H. Revisit later.
+map("n", "<leader>dv", function()
+	if in_codediff_tab() then
+		vim.cmd.tabclose()
+	else
+		vim.cmd("CodeDiff")
+	end
+end, { desc = "Toggle diff view" })
+map("n", "<leader>dh", "<Cmd>CodeDiff history %<CR>", { desc = "File history" })
+map("n", "<leader>dH", "<Cmd>CodeDiff history<CR>", { desc = "Repo history" })
