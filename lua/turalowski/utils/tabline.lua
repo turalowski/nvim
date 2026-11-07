@@ -36,6 +36,16 @@ local function label(tabnr)
 	if vim.bo[buf].buftype == "terminal" then
 		return modified .. "[Terminal]"
 	end
+	-- Oil tabs show their directory as "~/foo", no icon. Long paths keep their last 17 characters.
+	if vim.bo[buf].filetype == "oil" then
+		local dir = vim.api.nvim_buf_get_name(buf):gsub("^oil://", ""):gsub("/$", "")
+		dir = vim.fn.fnamemodify(dir == "" and "/" or dir, ":~")
+		local len = vim.fn.strchars(dir)
+		if len > MAX_NAME then
+			dir = "..." .. vim.fn.strcharpart(dir, len - CUT_NAME)
+		end
+		return modified .. dir
+	end
 	local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t")
 	if name == "" then
 		return modified .. "[No Name]"

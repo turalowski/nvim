@@ -198,3 +198,18 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 | `;e` | Lists diagnostics | - | 
 | `;n` | Shows notifications | - | 
 | `;h` | Lists git hunks | -  |
+
+### 3.2 File explorer
+
+- oil.nvim replaces netrw and shows hidden files.
+    - The directory is a buffer, so renaming, moving, and deleting files in plain text edition followed by `;w`
+- Columns: icon, permissions, size, modified time.
+- Renaming a file asks the LSP to update imports and saves those edits automatically.
+- In the tabline (2.3), an oil tab shows its directory (`~/foo`) with no icon. Paths longer that **20** characters are cut from the left to `...` plus the last **17**.
+
+| Keys | Action | Notes |
+| --- | --- | --- |
+| `sf` | Opens oil as a centered float with a live preview | At most **200** columns wide, with rounded corners. |
+| `h` |  Goes to the parent directory |  - | 
+ `q` | Closes oil | - | 
+

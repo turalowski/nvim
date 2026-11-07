@@ -30,3 +30,20 @@ end, { desc = "Show notifications" })
 map("n", ";h", function()
 	Snacks.picker.git_diff()
 end, { desc = "List git hunks" })
+
+-- File explorer (oil).
+map("n", "sf", function()
+	require("oil").open_float(nil, { preview = {} })
+end, { desc = "Open oil in a float with preview" })
+
+-- Keys inside oil buffers only.
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("turalowski_oil_keymaps", { clear = true }),
+	pattern = "oil",
+	desc = "Oil buffer keymaps",
+	callback = function(ev)
+		local actions = require("oil.actions")
+		map("n", "h", actions.parent.callback, { buffer = ev.buf, desc = "Parent directory" })
+		map("n", "q", actions.close.callback, { buffer = ev.buf, desc = "Close oil" })
+	end,
+})
