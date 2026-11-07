@@ -229,3 +229,15 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - `nvim-highlight-colors` paints hex, rgb, hsl, ANSI, and CSS variable colors as backgrounds. Tailwind is off.
     - Neovim's LSP document colors are turned off, so colors aren't painted twice.
 
+Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now, nothing is required.
+
+## 5 Code smarts
+
+### 5.1 Language servers
+
+- Mason + `mason-tool-installer` install on start, never auto-update:
+    - Servers: `lua-language-server`, `vtsls`, `eslint-lsp`, `oxlint`, `tailwindcss-language-server`, `css-lsp`, `rust-analyzer`, `copilot-language-server`
+    - Formatters: `prettier`, `prettierd`, `oxfmt`, `stylua`, `shfmt`
+- `nvim-lspconfig` supplies defaults. Servers are turned on with `vim.lsp.enable`: `eslint`, `oxlint`, `lua_ls`, `cssls`, `vtsls`, `tailwindcss`, `rust_analyzer`
+- Every server gets file-rename support (`didRename` / `willRename`)
+

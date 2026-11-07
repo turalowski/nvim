@@ -29,9 +29,13 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	"https://github.com/folke/todo-comments.nvim",
 	"https://github.com/brenoprata10/nvim-highlight-colors",
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
 })
 
 require("turalowski.plugins.ui")
 require("turalowski.plugins.navigation")
 require("turalowski.plugins.syntax")
+require("turalowski.plugins.lsp")
 require("turalowski.plugins.keymaps")
