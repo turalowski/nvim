@@ -1,4 +1,4 @@
-# nvim
+# nvim/lua/turalowski
 
 A Neovim 0.12 config built from a written spec, using Neovim's own features wherever they exist.
 
