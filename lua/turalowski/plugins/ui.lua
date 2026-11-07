@@ -52,7 +52,19 @@ require("lualine").setup({
 			{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
 			statusline.pretty_path,
 		},
-		lualine_x = { statusline.recording, "diagnostics", "diff" },
+		lualine_x = {
+			statusline.recording,
+			{
+				"diagnostics",
+				symbols = {
+					error = turalowski.icons.diagnostics.Error,
+					warn = turalowski.icons.diagnostics.Warn,
+					info = turalowski.icons.diagnostics.Info,
+					hint = turalowski.icons.diagnostics.Hint,
+				},
+			},
+			"diff",
+		},
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},

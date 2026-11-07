@@ -211,7 +211,7 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 | --- | --- | --- |
 | `sf` | Opens oil as a centered float with a live preview | At most **200** columns wide, with rounded corners. |
 | `h` |  Goes to the parent directory |  - | 
- `q` | Closes oil | - | 
+| `q` | Closes oil | - | 
 
 ## Syntax
 
@@ -240,4 +240,10 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
     - Formatters: `prettier`, `prettierd`, `oxfmt`, `stylua`, `shfmt`
 - `nvim-lspconfig` supplies defaults. Servers are turned on with `vim.lsp.enable`: `eslint`, `oxlint`, `lua_ls`, `cssls`, `vtsls`, `tailwindcss`, `rust_analyzer`
 - Every server gets file-rename support (`didRename` / `willRename`)
+
+### 5.2 Diagnostics look
+
+- Underlined, not updated while typing, sorted by severity.
+- Inline text: `* message`, with the source only when there are several.
+- Gutter icons come from the shared icon set.
 

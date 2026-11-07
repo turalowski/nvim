@@ -35,3 +35,22 @@ vim.lsp.config("*", {
 
 -- nvim-lspconfig supplies the defaults for each server; these turn them on.
 vim.lsp.enable({ "eslint", "oxlint", "lua_ls", "cssls", "vtsls", "tailwindcss", "rust_analyzer" })
+
+-- Diagnostics: underlined, not updated while typing, worst first.
+-- Inline text is "* message"; the source is shown only when several sources report.
+local icons = turalowski.icons.diagnostics
+local severity = vim.diagnostic.severity
+vim.diagnostic.config({
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+	virtual_text = { prefix = "*", source = "if_many" },
+	signs = {
+		text = {
+			[severity.ERROR] = icons.Error,
+			[severity.WARN] = icons.Warn,
+			[severity.INFO] = icons.Info,
+			[severity.HINT] = icons.Hint,
+		},
+	},
+})
