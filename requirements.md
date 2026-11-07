@@ -128,7 +128,6 @@
 | `<C-m>`                                                                                    | Jumps forward in the jump list                                                                                   | -                                                   |
 | `<leader>o` / `<leader>O`                                                                  | Open a line below or above without continuing a comment                                                          | -                                                   |
 | `<leader>up`                                                                               | Fast commit and push: asks for a message, then runs `git add .`, a signed `git commit -S`, and `git push`        | Aborts when the message is empty.                   |
-| `<leader>li`                                                                               | Copy the file path and line number to the system clipboard, as `path:Lline`                                      | -                                                   |
 | `<leader>bx`, `<leader>bn`, `<leader>bp`, `<leader>bd`                                     | Close current buffer, Go to next buffer, Go to previous buffer, Closes every hidden buffer, except unsaved ones. | -                                                   |
 | `<leader>R`                                                                                | Reload files changed on disk                                                                                     | -                                                   |
 
@@ -352,13 +351,6 @@ Comment: `<leader>d` (delete without copying, 1.8) now waits for `v`, `h`, or `H
 - `C` in the files panel commits with commitizen (`git cz`)
 
 Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygit settings above can move there. For now, nothing is required.
-
-## 7 Agentic coding
-
-### 7.1 Copy paths for agents
-
-| Keys | Action | Notes |
-| ---- | ------ | ----- |
 
 ## 7 Agentic coding
 

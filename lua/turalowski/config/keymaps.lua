@@ -75,7 +75,18 @@ end
 map("n", "<leader>up", git_workflow, { desc = "Fast commit/push" })
 
 -- Copy "path:L<line>" of the cursor position to the system clipboard.
-map("n", "<leader>li", '<Cmd>let @+ = expand("%") .. ":L" .. line(".")<CR>', { desc = "Copy file path and line" })
+-- Copy "path#L<line>" to the system clipboard, for pointing an agent at the exact line (7.1).
+local function copy_path(modifier)
+	local text = vim.fn.expand("%" .. modifier) .. "#L" .. vim.fn.line(".")
+	vim.fn.setreg("+", text)
+	vim.notify("Copied " .. text)
+end
+map("n", "<leader>li", function()
+	copy_path(":.")
+end, { desc = "Copy relative path and line" })
+map("n", "<leader>fi", function()
+	copy_path(":p")
+end, { desc = "Copy absolute path and line" })
 
 -- Delete every listed buffer that no window shows, skipping ones with unsaved changes.
 local function close_hidden_buffers()
