@@ -1,3 +1,19 @@
+-- Keep Treesitter parsers in sync with the plugin: update them whenever vim.pack installs or
+-- updates nvim-treesitter. Defined before vim.pack.add so it also runs on the first install.
+vim.api.nvim_create_autocmd("PackChanged", {
+	group = vim.api.nvim_create_augroup("turalowski_pack", { clear = true }),
+	desc = "Update Treesitter parsers after nvim-treesitter changes",
+	callback = function(ev)
+		local data = ev.data
+		if data.spec.name == "nvim-treesitter" and data.kind ~= "delete" then
+			if not data.active then
+				vim.cmd.packadd("nvim-treesitter")
+			end
+			vim.cmd("TSUpdate")
+		end
+	end,
+})
+
 vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	-- Optional themes: uncomment one here and its block in ui.lua to switch.
@@ -10,8 +26,10 @@ vim.pack.add({
 	"https://github.com/folke/snacks.nvim",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 })
 
 require("turalowski.plugins.ui")
 require("turalowski.plugins.navigation")
+require("turalowski.plugins.syntax")
 require("turalowski.plugins.keymaps")

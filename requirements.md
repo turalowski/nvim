@@ -213,3 +213,16 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 | `h` |  Goes to the parent directory |  - | 
  `q` | Closes oil | - | 
 
+## Syntax
+
+### 4.1 Treesitter
+
+- `nvim-treesitter`, main branch.
+- Ensures parsers: astro, bash, c, cmake, cpp, css, diff, fish, gitignore, go graghql, html, http, java, javascript, jsdoc, json, lua, luadoc, luap, markdown, markdown_inline, php, printf, python, query, regex, rust, scss, sql, svelte, toml, tsx, typescript, vim, vimdoc, xml, yaml, docker, composer.
+- A FileType autocmd starts highlighting and Treesitter indent whenever a parser exists.
+- `TSUpdate` runs on the `PackChanged` event.
+- Parsers stay in sync with the plugin version.
+
+
+
+
