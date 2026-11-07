@@ -223,6 +223,9 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - `TSUpdate` runs on the `PackChanged` event.
 - Parsers stay in sync with the plugin version.
 
+### 4.2 Small highlights
 
-
+- `todo-comments.nvim` highlights `TODO`, `FIXME`, and the like, with defaults.
+- `nvim-highlight-colors` paints hex, rgb, hsl, ANSI, and CSS variable colors as backgrounds. Tailwind is off.
+    - Neovim's LSP document colors are turned off, so colors aren't painted twice.
 

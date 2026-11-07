@@ -55,3 +55,14 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end,
 })
+
+-- Highlight TODO, FIXME, HACK, NOTE and the like in comments.
+require("todo-comments").setup()
+
+-- Paint color codes (hex, rgb, hsl, ANSI, CSS variables) with their own color as background.
+require("nvim-highlight-colors").setup({
+	render = "background",
+	enable_tailwind = false,
+})
+-- Turn off Neovim's LSP document colors, so colors are not painted twice.
+vim.lsp.document_color.enable(false)

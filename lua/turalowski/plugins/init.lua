@@ -27,6 +27,8 @@ vim.pack.add({
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+	"https://github.com/folke/todo-comments.nvim",
+	"https://github.com/brenoprata10/nvim-highlight-colors",
 })
 
 require("turalowski.plugins.ui")
