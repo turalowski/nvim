@@ -138,6 +138,13 @@ map("n", "<leader>gs", function()
 	end
 end, { desc = "Stage / unstage buffer" })
 
+map("n", "]h", function()
+	gs.nav_hunk("next")
+end, { desc = "Next hunk" })
+map("n", "[h", function()
+	gs.nav_hunk("prev")
+end, { desc = "Previous hunk" })
+
 -- stage_hunk unstages the hunk when it is already staged. In visual mode, only the selected lines.
 map("n", "<leader>gh", function()
 	gs.stage_hunk()

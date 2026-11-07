@@ -324,3 +324,11 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 | `<leader>go` | Opens the file as of the commit that last touched the line, in a new tab | Shows the next of an old change without leaving the editor. |
 | `<leader>gs` | Stages the buffer, or unstages it if nothing is left to stage            | -                                                           |
 | `<leader>gh` | Stages or unstages the hunk                                              | -                                                           |
+| `]h` / `[h`  | Goes to the next / previous hunk                                         | -                                                           |
+
+### 6.2 Diff view
+
+- `codediff.nvim` for side-by-side diffs and history
+  - Useful when agents make a lot of changes in the codebase
+- Explorer: **tree** view, **50** columns wide, opens files as the cursor moves, shows +/- line stats.
+- Compact mode: only changes plus **0** context lines, with folds synced accross panes.
