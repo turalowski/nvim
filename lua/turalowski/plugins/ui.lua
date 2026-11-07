@@ -84,3 +84,12 @@ require("incline").setup({
 		return tag
 	end,
 })
+
+-- snacks.nvim: only the modules below are on for now. Later steps turn on more of it.
+require("snacks").setup({
+	notifier = { enabled = true },
+	indent = { enabled = true },
+	statuscolumn = { enabled = true },
+	words = { enabled = true },
+	scroll = { enabled = false },
+})

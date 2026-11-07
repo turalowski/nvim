@@ -174,3 +174,11 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - The tag hides when the cursor reaches its line.
 - The active window's tag is **pink** with dark text.
     - The icon takes the dark text color, so it stays readable on pink.
+
+### 2.6 Snacks
+
+- `snacks.nvim` provides notifier, indent guides, statuscolumn, and word highlighting.
+- I'll turn on more of it in later steps, like this picker and the lazygit integration.
+- Words: the word under the cursor is highlighted everywhere. `]]` / `[[` jump between occurrences.
+- Smooth scroll is *off**.
+    - Scrolling should feel instant.
