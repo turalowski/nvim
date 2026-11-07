@@ -107,3 +107,27 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 
 - Yanked text flashes briefly.
 - Only the active window shows the cursorline.
+
+### 1.8 Core Keymaps
+
+| Keys | Action | Notes |
+| ---  | ----- | ----- |
+| 'x' | Deletes without copying | - |  
+| `<leader>nh` | Clear search highlights | - | 
+| `<leader>d`, `<leader>c`, `<leader>p` | Delete, change, and paste without touching the yank | The yanked text stays safe while editing around it. |
+| `dw` | Deletes the word backwards without copying | - | 
+| `+` / `-` | Increment and decrement numbers | - |
+| `<C-a>` | Selects all | - | 
+| `<leader>to`, `<leader>tx`, `<leader>tn` / `Tab`, `<leader>tp` / `Shift-Tab`, `<leader>tf` | Open new tab, Close current tab, Go next tab, To to previous tab, Open current buffer in new tab | - |
+| `<leader>sv`, `<leader>ss`, `<leader>se`, `<leader>sx` | Split vertical, Split horizontal, Make splits equal size, Close current split | - |
+| `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>` | Move between windows | - | 
+| `<C-d>` | Keep cursor in the middle on page down | - |
+| `<C-u>` | Keep cursor in the middle on page up | - |
+| `n` | Keep cursor in the middle on highlight of next search item | - |
+| `N` | Keep cursor in the middle on highlight previous search item | - | 
+| `<C-m>` | Jumps forward in the jump list | - |
+| `<leader>o` / `<leader>O` | Open a line below or above without continuing a comment | - | 
+| `<leader>up` | Fast commit and push: asks for a message, then runs `git add .`, a signed `git commit -S`, and `git push` | Aborts when the message is empty. |
+| `<leader>li` | Copy the file path and line number to the system clipboard, as `path:Lline` | - |
+
+
