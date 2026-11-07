@@ -1,1 +1,3 @@
-return {}
+return {
+	tabline = require("turalowski.utils.tabline"),
+}

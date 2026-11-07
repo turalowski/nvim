@@ -141,3 +141,15 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 
 - `mini.icons`, also mocking `nvim-web-devicons`. 
     - One icon source for every plugin.
+
+### 2.3 Tabline
+
+- Custom tabline in `utils/tabline.lua`, shown only when there are **2** or more tabs.
+- Each tab shows t he active window's file name with its icon, padded with **3** spaces, between slanted separators. Both edges slant outward going down, so each tab is a trapezoid, wider at the bottom, like:
+    - tab-style
+    - Differ active and inactive tab with trext and background colors.
+    - The icon takes the tab's text color.
+    - The separators take the tab's color on a transparent background, and so does the empty area after the last tab.
+- Names longer than **20** characters are cut to **17** oplus `...`
+- Unsaved tabs shows `[+]` before the icon.
+- Terminal show `[Terminal]` and empty buffers `[No Name]`, with no icon.

@@ -86,3 +86,7 @@ require("vim._core.ui2").enable({
 		pager = { height = 0.5 },
 	},
 })
+
+-- Custom tabline from utils/tabline.lua, shown only when there are 2 or more tabs.
+vim.opt.showtabline = 1
+vim.opt.tabline = "%!v:lua.turalowski.tabline.render()"
