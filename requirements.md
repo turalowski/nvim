@@ -129,5 +129,6 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 | `<leader>o` / `<leader>O` | Open a line below or above without continuing a comment | - | 
 | `<leader>up` | Fast commit and push: asks for a message, then runs `git add .`, a signed `git commit -S`, and `git push` | Aborts when the message is empty. |
 | `<leader>li` | Copy the file path and line number to the system clipboard, as `path:Lline` | - |
-
+| `<leader>bx`, `<leader>bn`, `<leader>bp`, `<leader>bd` | Close current buffer, Go to next buffer, Go to previous buffer, Closes every hidden buffer, except unsaved ones. | - |
+| `<leader>R` | Reload files changed on disk | - | 
 

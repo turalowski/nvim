@@ -76,3 +76,24 @@ map("n", "<leader>up", git_workflow, { desc = "Fast commit/push" })
 
 -- Copy "path:L<line>" of the cursor position to the system clipboard.
 map("n", "<leader>li", '<Cmd>let @+ = expand("%") .. ":L" .. line(".")<CR>', { desc = "Copy file path and line" })
+
+-- Delete every listed buffer that no window shows, skipping ones with unsaved changes.
+local function close_hidden_buffers()
+	local closed = 0
+	for _, buf in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+		if #buf.windows == 0 and buf.changed == 0 then
+			vim.cmd.bdelete(buf.bufnr)
+			closed = closed + 1
+		end
+	end
+	vim.notify(("Closed %d hidden buffer(s)."):format(closed))
+end
+
+map("n", "<leader>bd", close_hidden_buffers, { desc = "Close hidden buffers" })
+
+map("n", "<leader>bx", "<Cmd>bdelete<CR>", { desc = "Close current buffer" })
+map("n", "<leader>bn", "<Cmd>bnext<CR>", { desc = "Next buffer" })
+map("n", "<leader>bp", "<Cmd>bprevious<CR>", { desc = "Previous buffer" })
+
+-- checktime looks for files changed outside Neovim; with 'autoread' on, unmodified buffers reload.
+map("n", "<leader>R", "<Cmd>checktime<CR>", { desc = "Reload files changed on disk" })
