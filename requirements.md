@@ -92,3 +92,17 @@ Don't build test projects or drive the UI. I check the behaviour myself after `Z
 - New splits open **below** and to the **right**.
 - Folds come from **Treesitter**, with `foldlevel` **99**.
     - Everything starts unfolded, and folds can still be closed by syntax.
+
+### 1.6 Messages
+
+- Neovim 0.12's experimental ui2 handles messages. Turn it on at the end of `config/options.lua`
+    - Short messages: corner popup up to **30%** of the screen tall, gone after **5 seconds**
+    - Long output (errors, listing like `:ls`, `:verbose`, shell commands and their output, progress): a scrollable pager up to **half** the screen.
+    - Search count, search pattern, completion, `:` completion list, and confirm prompts stay in the command line.
+    - Output of a command I type goes to the command line too, whatever its kind. It expands over the bottom of the screen until the next day, and "Enter" moves it into the pager. 
+    - `tiny-cmdline.nvim` shows the `:` command line as a floating box centered left to right, **20%** from the top. It's set up in `plugins/ui.lua`
+        - With `cmdheight` 0 the command line needs somewhere to appear, and near the top is where  the eyes already are.
+
+
+
+
