@@ -97,3 +97,17 @@ map("n", "<leader>bp", "<Cmd>bprevious<CR>", { desc = "Previous buffer" })
 
 -- checktime looks for files changed outside Neovim; with 'autoread' on, unmodified buffers reload.
 map("n", "<leader>R", "<Cmd>checktime<CR>", { desc = "Reload files changed on disk" })
+
+-- LSP keys (5.4.1). The other LSP keys are Neovim 0.12 built-ins (grn, gra, grr, gri, ...).
+-- E works in any buffer with diagnostics; gd and gt only where a language server is attached,
+-- so other buffers keep the built-in gd and gt.
+map("n", "E", vim.diagnostic.open_float, { desc = "Show diagnostic under cursor" })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("turalowski_lsp_keymaps", { clear = true }),
+	desc = "LSP keymaps",
+	callback = function(ev)
+		map("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition" })
+		map("n", "gt", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Go to type definition" })
+	end,
+})

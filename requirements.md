@@ -270,7 +270,7 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 - In the command line, the menu opens by itself for `:` commands only, with nothing preselected. 
 
 
-### 5.5 LSP keymaps
+### 5.4.1 LSP keymaps
 
 - Built-in Neovim 0.12 keys stay as they are. The remaps below add shorter keys on top.
 - `gd`, `E`, and `gt` replace built-in keys, so the old behaviour moves or goes away.
@@ -292,4 +292,8 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 | `]D` / `[D` | Last / first diagnostic | Built-in. |
 | `;e` | List all diagnostics in a picker | From 3.1. |
 | `<C-o>` / `<C-t>` | Jump back | Built-in. `<C-o>` after any jump, `<C-t>` after `<C-]>`. |
-| `<C-m>` | Jump forward | From 1.8. |
+
+### 5.5 Pairs
+
+- mini.pairs with defaults, in insert and command mode.
+
