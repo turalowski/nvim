@@ -4,6 +4,7 @@ vim.pack.add({
 	-- "https://github.com/craftzdog/solarized-osaka.nvim",
 	-- "https://github.com/folke/tokyonight.nvim",
 	-- "https://github.com/navarasu/onedark.nvim",
+	"https://github.com/nvim-mini/mini.icons",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 })
 

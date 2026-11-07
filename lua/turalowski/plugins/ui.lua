@@ -25,6 +25,10 @@ vim.cmd.colorscheme("catppuccin")
 -- })
 -- require("onedark").load()
 
+-- One icon source: plugins that ask for nvim-web-devicons get mini.icons instead.
+require("mini.icons").setup()
+MiniIcons.mock_nvim_web_devicons()
+
 require("tiny-cmdline").setup({
 	position = { x = "50%", y = "20%" },
 })
