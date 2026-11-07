@@ -305,5 +305,7 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 - `conform.nvim` formats on save with a **1000ms** timeout, falling back to the LSP.
 - Web files (js, ts, jsx, tsx, json, css, scss, less, html, markdown, mdx, yaml): oxfmt, then prettierd, then prettier, using the first available.
     - oxfmt runs only when the project h as an oxfmt config, like `.oxfmtrc.json` or a Vite+ `vite.config.ts`, so projects using prettier keep their own formatter.
-- lua: stylua.sh: shfmt. fish: fish_indent.
+    - A `vite.config.ts` counts only when it has a `fmt` section, so plain Vite projects keep prettier.
+    - `.mdx` files get the `mdx` filetype, which Neovim doesn't detect on its own.
+- lua: stylua.sh: shfmt.
 - `:ToggleFormatter` turns format-on-save off or back on for the current buffer, with a nofication. The command lives in `config/commands.lua`
