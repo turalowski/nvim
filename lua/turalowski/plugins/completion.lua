@@ -39,3 +39,8 @@ require("blink.cmp").setup({
 		},
 	},
 })
+
+-- Auto-close brackets and quotes with mini.pairs defaults, also in the command line.
+require("mini.pairs").setup({
+	modes = { insert = true, command = true, terminal = false },
+})
