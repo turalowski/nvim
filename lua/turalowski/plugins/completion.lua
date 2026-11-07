@@ -1,4 +1,8 @@
 require("blink.cmp").setup({
+	-- Off when :ToggleCompletion turned it off for this buffer, or :ToggleCompletion! for all.
+	enabled = function()
+		return vim.g.completion ~= false and vim.b.completion ~= false
+	end,
 	-- Enter accepts the selected item.
 	keymap = { preset = "enter" },
 	completion = {

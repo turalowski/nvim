@@ -268,6 +268,9 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 - Gohst text is **off**.
     - Copilot already shows inline suggestions, and two ghost texts would clash.
 - In the command line, the menu opens by itself for `:` commands only, with nothing preselected. 
+- `:ToggleCompletion` turns completion off or on for the current buffer. `:ToggleCompletion!` does it for every buffer.
+    - Some file types, like `.mdx`, complete in odd ways.
+    - Completion runs only when both the buffer and the global switch are on.
 
 
 ### 5.4.1 LSP keymaps
@@ -297,3 +300,10 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 
 - mini.pairs with defaults, in insert and command mode.
 
+### 5.6 Formatting
+
+- `conform.nvim` formats on save with a **1000ms** timeout, falling back to the LSP.
+- Web files (js, ts, jsx, tsx, json, css, scss, less, html, markdown, mdx, yaml): oxfmt, then prettierd, then prettier, using the first available.
+    - oxfmt runs only when the project h as an oxfmt config, like `.oxfmtrc.json` or a Vite+ `vite.config.ts`, so projects using prettier keep their own formatter.
+- lua: stylua.sh: shfmt. fish: fish_indent.
+- `:ToggleFormatter` turns format-on-save off or back on for the current buffer, with a nofication. The command lives in `config/commands.lua`
