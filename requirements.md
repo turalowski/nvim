@@ -340,3 +340,34 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 | `<leader>dH` | Shows the repo history           | -     |
 
 Comment: `<leader>d` (delete without copying, 1.8) now waits for `v`, `h`, or `H`. I will revisit it later. For now, nothing is required.
+
+### 6.3 lazygit
+
+- `;g` opens lazygit in a float through `snacks.nvim` with the theme synced and the active border in the WarningMsg color.
+- Pressing `e` on a file closes lazygit and opens the file in the window if was launched from, through `$NVIM` and `nvim --server --remote`.
+  - `;g` remembers the current window. `e` quits lazygit, focuses that window with `--remote-send`, then opens the file, so the cursor ends up in the file.
+  - Not a new tab and not a nested Neovim. Outside Neovim it jsut runs `nvim <file>`.
+- Diffs render with `delta --dark --paging=nefver --syntax-theme="Solarized (dark)"`.
+- Mouse events are off and auto-fetch is off.
+- `C` in the files panel commits with commitizen (`git cz`)
+
+Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygit settings above can move there. For now, nothing is required.
+
+## 7 Agentic coding
+
+### 7.1 Copy paths for agents
+
+| Keys | Action | Notes |
+| ---- | ------ | ----- |
+
+## 7 Agentic coding
+
+### 7.1 Copy paths for agents
+
+| Keys         | Action                                                       | Notes                                     |
+| ------------ | ------------------------------------------------------------ | ----------------------------------------- |
+| `<leader>li` | Copes the current file's path relative to cwd with `#L<line` | e.g., `lua/turalowski/plugins/ui.lua#L11` |
+| `<leader>fi` | Copies the absolute path the same way                        | -                                         |
+
+- Both show the copied text in a notification.
+  - Pasting the path into an agent's promp points it at the exact line.

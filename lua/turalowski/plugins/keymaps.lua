@@ -214,3 +214,8 @@ map("n", "<leader>dv", function()
 end, { desc = "Toggle diff view" })
 map("n", "<leader>dh", "<Cmd>CodeDiff history %<CR>", { desc = "File history" })
 map("n", "<leader>dH", "<Cmd>CodeDiff history<CR>", { desc = "Repo history" })
+
+-- lazygit in a float (snacks). Remembers this window so `e` in lazygit opens files here.
+map("n", ";g", function()
+	turalowski.lazygit.open()
+end, { desc = "Open lazygit" })

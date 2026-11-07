@@ -105,4 +105,5 @@ require("snacks").setup({
 	words = { enabled = true },
 	scroll = { enabled = false },
 	picker = { enabled = true },
+	lazygit = turalowski.lazygit.snacks,
 })
