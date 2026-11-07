@@ -118,3 +118,69 @@ vim.api.nvim_create_autocmd("LspAttach", {
 map({ "n", "x" }, "<leader>f", function()
 	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format now" })
+
+-- Git (gitsigns).
+local gs = require("gitsigns")
+
+map("n", "<leader>gb", function()
+	gs.blame_line()
+end, { desc = "Blame line" })
+map("n", "<leader>gB", function()
+	gs.blame()
+end, { desc = "Blame buffer" })
+
+-- Stage the whole buffer; when nothing is left to stage, unstage it instead.
+map("n", "<leader>gs", function()
+	if #(gs.get_hunks() or {}) > 0 then
+		gs.stage_buffer()
+	else
+		gs.reset_buffer_index()
+	end
+end, { desc = "Stage / unstage buffer" })
+
+-- stage_hunk unstages the hunk when it is already staged. In visual mode, only the selected lines.
+map("n", "<leader>gh", function()
+	gs.stage_hunk()
+end, { desc = "Stage / unstage hunk" })
+map("x", "<leader>gh", function()
+	gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+end, { desc = "Stage / unstage selected lines" })
+
+-- Open the file as it was in the commit that last touched the cursor line, in a new tab,
+-- with the cursor on that line.
+map("n", "<leader>go", function()
+	local file = vim.api.nvim_buf_get_name(0)
+	local lnum = vim.fn.line(".")
+	local dir = vim.fs.dirname(file)
+	local blame = vim.system(
+		{ "git", "blame", "--porcelain", "-L", lnum .. "," .. lnum, "--", file },
+		{ cwd = dir, text = true }
+	)
+		:wait()
+	if blame.code ~= 0 then
+		vim.notify("git blame failed:\n" .. blame.stderr, vim.log.levels.ERROR)
+		return
+	end
+	local sha, orig_lnum = blame.stdout:match("^(%x+) (%d+)")
+	local path = blame.stdout:match("\nfilename ([^\n]+)")
+	if not sha or sha:match("^0+$") then
+		vim.notify("This line is not committed yet.", vim.log.levels.WARN)
+		return
+	end
+	local show = vim.system({ "git", "show", sha .. ":" .. path }, { cwd = vim.fs.root(file, ".git"), text = true })
+		:wait()
+	if show.code ~= 0 then
+		vim.notify("git show failed:\n" .. show.stderr, vim.log.levels.ERROR)
+		return
+	end
+	local ft = vim.bo.filetype
+	vim.cmd.tabnew()
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(show.stdout:gsub("\n$", ""), "\n"))
+	vim.bo[buf].buftype = "nofile"
+	vim.bo[buf].bufhidden = "wipe"
+	vim.bo[buf].modifiable = false
+	vim.bo[buf].filetype = ft
+	vim.api.nvim_buf_set_name(buf, sha:sub(1, 8) .. ":" .. path)
+	vim.api.nvim_win_set_cursor(0, { tonumber(orig_lnum), 0 })
+end, { desc = "Open file at the commit of this line" })

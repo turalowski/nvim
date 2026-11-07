@@ -288,25 +288,39 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 
 ### 5.7 LSP keymaps
 
-| Keys                   | Action                                                          | Notes                                                                        |
-| ---------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `gd`                   | Go to definition                                                | Through the picker, like `gD`, `gt`, and `gr`.                               |
-| `gD`                   | Goes to the declaration                                         | -                                                                            |
-| `gt`                   | Go to type definition                                           | Replaces "next tab", which stays on `Tab` and `<leader>tn`. Built-in: `grt`. |
+| Keys                   | Action                                                          | Notes                                                                                     |
+| ---------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `gd`                   | Go to definition                                                | Through the picker, like `gD`, `gt`, and `gr`.                                            |
+| `gD`                   | Goes to the declaration                                         | -                                                                                         |
+| `gt`                   | Go to type definition                                           | Replaces "next tab", which stays on `Tab` and `<leader>tn`. Built-in: `grt`.              |
 | `gr`                   | List references                                                 | Fires instantly; the built-in `grn`, `gra`, `grr`, `gri`, `grt`, `grx` keys are not used. |
-| `gI`                   | Goes to the source definition in TypeScript, the implementation | -                                                                            |
-| `;c`                   | Lists incoming calls                                            | -                                                                            |
-| `K`                    | Show type and docs in a float                                   | Built-in. Press `K` again to enter the float and scroll.                     |
-| `gK` / `C-K>` (insert) | Show signature help                                             | -                                                                            |
-| `<leader>ca`           | Shows code actions                                              | -                                                                            |
-| `<leader>cr`           | Renames symbol                                                  | -                                                                            |
-| `<leader>cR`           | Renames the file with import updates                            | -                                                                            |
-| `<leader>f`            | Formats now                                                     | -                                                                            |
-| `<leader>cl`           | Shows LSP info                                                  | -                                                                            |
-| `E`                    | Show the error under the cursor in a float                      | Replaces "jump to end of WORD". Built-in: `<C-w>d`.                          |
-| `gO`                   | List symbols in the file                                        | Built-in.                                                                    |
-| `<C-s>`                | Show function parameters while typing arguments                 | Built-in, insert mode.                                                       |
-| `]d` / `[d`            | Next / previous diagnostic                                      | Built-in.                                                                    |
-| `]D` / `[D`            | Last / first diagnostic                                         | Built-in.                                                                    |
-| `;e`                   | List all diagnostics in a picker                                | From 3.1.                                                                    |
-| `<C-o>` / `<C-t>`      | Jump back                                                       | Built-in. `<C-o>` after any jump, `<C-t>` after `<C-]>`.                     |
+| `gI`                   | Goes to the source definition in TypeScript, the implementation | -                                                                                         |
+| `;c`                   | Lists incoming calls                                            | -                                                                                         |
+| `K`                    | Show type and docs in a float                                   | Built-in. Press `K` again to enter the float and scroll.                                  |
+| `gK` / `C-K>` (insert) | Show signature help                                             | -                                                                                         |
+| `<leader>ca`           | Shows code actions                                              | -                                                                                         |
+| `<leader>cr`           | Renames symbol                                                  | -                                                                                         |
+| `<leader>cR`           | Renames the file with import updates                            | -                                                                                         |
+| `<leader>f`            | Formats now                                                     | -                                                                                         |
+| `<leader>cl`           | Shows LSP info                                                  | -                                                                                         |
+| `E`                    | Show the error under the cursor in a float                      | Replaces "jump to end of WORD". Built-in: `<C-w>d`.                                       |
+| `gO`                   | List symbols in the file                                        | Built-in.                                                                                 |
+| `<C-s>`                | Show function parameters while typing arguments                 | Built-in, insert mode.                                                                    |
+| `]d` / `[d`            | Next / previous diagnostic                                      | Built-in.                                                                                 |
+| `]D` / `[D`            | Last / first diagnostic                                         | Built-in.                                                                                 |
+| `;e`                   | List all diagnostics in a picker                                | From 3.1.                                                                                 |
+| `<C-o>` / `<C-t>`      | Jump back                                                       | Built-in. `<C-o>` after any jump, `<C-t>` after `<C-]>`.                                  |
+
+## 6. Git
+
+### 6.1 Signs and boilerplate
+
+- `gitsigns.nvim` with defaults.
+
+| Keys         | Action                                                                   | Notes                                                       |
+| ------------ | ------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| `<leader>gb` | blames the line                                                          | -                                                           |
+| `<leader>gB` | blames the buffer                                                        | -                                                           |
+| `<leader>go` | Opens the file as of the commit that last touched the line, in a new tab | Shows the next of an old change without leaving the editor. |
+| `<leader>gs` | Stages the buffer, or unstages it if nothing is left to stage            | -                                                           |
+| `<leader>gh` | Stages or unstages the hunk                                              | -                                                           |
