@@ -38,6 +38,10 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 	"https://github.com/nvim-mini/mini.pairs",
 	"https://github.com/coder/claudecode.nvim",
+	"https://github.com/christoomey/vim-tmux-navigator",
+	"https://github.com/folke/which-key.nvim",
+	"https://github.com/szw/vim-maximizer",
+	"https://github.com/windwp/nvim-ts-autotag",
 })
 
 require("turalowski.plugins.ui")
@@ -48,4 +52,5 @@ require("turalowski.plugins.lsp")
 require("turalowski.plugins.formatting")
 require("turalowski.plugins.git")
 require("turalowski.plugins.ai")
+require("turalowski.plugins.tools")
 require("turalowski.plugins.keymaps")

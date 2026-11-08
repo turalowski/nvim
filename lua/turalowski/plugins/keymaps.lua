@@ -231,3 +231,13 @@ end, { desc = "Open lazygit" })
 map("n", "<leader>ac", "<Cmd>ClaudeCode<CR>", { desc = "Toggle Claude" })
 map("x", "<leader>as", "<Cmd>ClaudeCodeSend<CR>", { desc = "Send selection to Claude" })
 map("n", "<leader>ab", "<Cmd>ClaudeCodeAdd %<CR>", { desc = "Add buffer to Claude" })
+
+-- Window moves that also cross into tmux panes (vim-tmux-navigator).
+-- Replaces the plain <C-w> moves from config/keymaps.lua.
+map("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", { desc = "Move to left window or tmux pane" })
+map("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", { desc = "Move to window or tmux pane below" })
+map("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", { desc = "Move to window or tmux pane above" })
+map("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", { desc = "Move to right window or tmux pane" })
+
+-- Maximize the window, or restore the layout (vim-maximizer).
+map("n", "<leader>sm", "<Cmd>MaximizerToggle<CR>", { desc = "Maximize / restore window" })
