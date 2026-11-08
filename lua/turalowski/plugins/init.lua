@@ -43,6 +43,8 @@ vim.pack.add({
 	"https://github.com/szw/vim-maximizer",
 	"https://github.com/windwp/nvim-ts-autotag",
 	"https://github.com/kylechui/nvim-surround",
+	"https://github.com/nvim-lua/plenary.nvim",
+	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 })
 
 require("turalowski.plugins.ui")

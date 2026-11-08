@@ -7,3 +7,6 @@ require("oil").setup({
 	lsp_file_methods = { enabled = true, autosave_changes = true },
 	float = { max_width = 200, border = "rounded" },
 })
+
+-- Harpoon: a short, per-project list of files to jump between.
+require("harpoon"):setup()

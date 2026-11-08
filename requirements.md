@@ -405,6 +405,7 @@ Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygi
 ### 8.3 Better Navigation
 
 - Use `ThePrimeagen/harpoon` for easy navigation between files.
+  - `harpoon2` branch, with `plenary.nvim`.
 
 | Keys                        | Action                               | Notes |
 | --------------------------- | ------------------------------------ | ----- |

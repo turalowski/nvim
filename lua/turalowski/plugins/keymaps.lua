@@ -241,3 +241,24 @@ map("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", { desc = "Move to right window o
 
 -- Maximize the window, or restore the layout (vim-maximizer).
 map("n", "<leader>sm", "<Cmd>MaximizerToggle<CR>", { desc = "Maximize / restore window" })
+
+-- Harpoon file list.
+local harpoon = require("harpoon")
+
+map("n", "<leader>ha", function()
+	harpoon:list():add()
+end, { desc = "Harpoon add file" })
+map("n", "<leader>hl", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Harpoon list files" })
+map("n", "<leader>hp", function()
+	harpoon:list():prev()
+end, { desc = "Harpoon previous file" })
+map("n", "<leader>hn", function()
+	harpoon:list():next()
+end, { desc = "Harpoon next file" })
+for i = 1, 4 do
+	map("n", "<leader>h" .. i, function()
+		harpoon:list():select(i)
+	end, { desc = "Harpoon file " .. i })
+end
