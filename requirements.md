@@ -190,7 +190,7 @@
 
 | Keys | Action                             | Comment                                                                |
 | ---- | ---------------------------------- | ---------------------------------------------------------------------- |
-| `:f` | Finds files, including hidden ones | Dotfiles like `.github/` and `.env.example` are part ofd real projects | -   |
+| `;f` | Finds files, including hidden ones | Dotfiles like `.github/` and `.env.example` are part ofd real projects | -   |
 | `;r` | Live-greps, including hidden files | -                                                                      |
 | `;;` | Reopens the last picker            | -                                                                      |
 | `\\` | Lists open buffers                 | Jumps to a window that already shows the buffer.                       |
@@ -205,6 +205,7 @@
 - Columns: icon, permissions, size, modified time.
 - Renaming a file asks the LSP to update imports and saves those edits automatically.
 - In the tabline (2.3), an oil tab shows its directory (`~/foo`) with no icon. Paths longer that **20** characters are cut from the left to `...` plus the last **17**.
+- When oil is open, clicking <C-c> mistakenly closes it, and all changes are deleted. If there are any changes, it should be double checked if user wants to close it.
 
 | Keys | Action                                            | Notes                                               |
 | ---- | ------------------------------------------------- | --------------------------------------------------- |
@@ -270,6 +271,7 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 - `:ToggleCompletion` turns completion off or on for the current buffer. `:ToggleCompletion!` does it for every buffer.
   - Some file types, like `.mdx`, complete in odd ways.
   - Completion runs only when both the buffer and the global switch are on.
+  - `<leader>tc` toggles completion for the current buffer.
 
 ### 5.5 Pairs
 
@@ -321,7 +323,7 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 | `<leader>gb` | blames the line                                                          | -                                                           |
 | `<leader>gB` | blames the buffer                                                        | -                                                           |
 | `<leader>go` | Opens the file as of the commit that last touched the line, in a new tab | Shows the next of an old change without leaving the editor. |
-| `<leader>gs` | Stages the buffer, or unstages it if nothing is left to stage            | -                                                           |
+| `<leader>gH` | Stages the buffer, or unstages it if nothing is left to stage            | -                                                           |
 | `<leader>gh` | Stages or unstages the hunk                                              | -                                                           |
 | `]h` / `[h`  | Goes to the next / previous hunk                                         | -                                                           |
 
@@ -363,3 +365,64 @@ Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygi
 
 - Both show the copied text in a notification.
   - Pasting the path into an agent's promp points it at the exact line.
+
+### 7.2 Claude Code
+
+- Use `coder/claudecode.nvim` for Claude Code integration.
+
+| Keys         | Action         | Notes |
+| ------------ | -------------- | ----- |
+| `<leader>ac` | Toggle Claude  | -     |
+| `<leader>as` | Send Selection | -     |
+| `<leader>ab` | Add buffer     | -     |
+
+## 8 Extras
+
+### 8.1 Tools
+
+- Use `christoomey/vim-tmux-navigator` to move between neovim and tmux windows.
+- Use `folke/which-key.nvim` to show shortcuts.
+  - It should use 500ms timeout length.
+- Use `szw/vim-maximizer` to control the window size.
+  - `<leader>sm` should be shortcut to maximize / normalize the window size.
+- Use `windwp/nvim-ts-autotag` to autoclose html tags.
+- Use `kylechui/nvim-surround` for surroundings. Use default shortcuts.
+
+## 8.2 Better surrounding
+
+- Use `kylechui/nvim-surround` for better surroundings. Use default shortcuts.
+
+| Old text                   | Keys        | New text                |
+| -------------------------- | ----------- | ----------------------- |
+| `surr*ound_words`          | `ysiw)`     | `(surround_words)`      |
+| `surr*ound_words`          | `ysiw(`     | `( surround_words )`    |
+| `*make strings`            | `ys$"`      | `"make strings"`        |
+| `[delete ar*ound me!]`     | `ds]`       | `delete around me!`     |
+| `remove <b>HTML t*ags</b>` | `dst`       | `remove HTML tags`      |
+| `'change quot*es'`         | `cs'"`      | `"change quotes"`       |
+| `<b>or tag* types</b>`     | `csth1<CR>` | `<h1>or tag types</h1>` |
+| `delete(functi*on calls)`  | `dsf`       | `function calls`        |
+
+### 8.3 Better Navigation
+
+- Use `ThePrimeagen/harpoon` for easy navigation between files.
+
+| Keys                        | Action                               | Notes |
+| --------------------------- | ------------------------------------ | ----- |
+| `<leader>ha`                | Harpoon add file                     | -     |
+| `<leader>hl`                | Harpoon list files                   | -     |
+| `<leader>hp` / `<leader>hn` | Harpoon move to previous / next file | -     |
+| `<leader>h1/2/3/4`          | Harpoon move to file 1/2/3/4         | -     |
+
+### 8.4 Better commenting
+
+- Use `numToStr/Comment.nvim` for better commenting
+
+| Keys                | Action                                                                      | Notes      |
+| ------------------- | --------------------------------------------------------------------------- | ---------- |
+| `gcc`               | Toggles the current line using linewise comment                             |            |
+| `gbc`               | Toggles the current line using blockwise comment                            |            |
+| `[count]gcc`        | Toggles the number of lines given as a prefix-count using linewise comment  |            |
+| `[count]gbc`        | Toggles the number of lines given as a prefix-count using blockwise comment |            |
+| `gc[count]{motion}` | Toggles the region using linewise comment                                   | Op-pending |
+| `gb[count]{motion}` | Toggles the region using blockwise comment                                  | Op-pending |

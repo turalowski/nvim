@@ -25,6 +25,8 @@ map("n", "<leader>tp", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<S-Tab>", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>tf", "<Cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
+map("n", "<leader>tc", "<Cmd>ToggleCompletion<CR>", { desc = "Toggle completion for this buffer" })
+
 map("n", "<leader>sv", "<C-w>v", { desc = "Split vertically" })
 map("n", "<leader>ss", "<C-w>s", { desc = "Split horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })

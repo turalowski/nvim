@@ -45,6 +45,13 @@ vim.api.nvim_create_autocmd("FileType", {
 		local actions = require("oil.actions")
 		map("n", "h", actions.parent.callback, { buffer = ev.buf, desc = "Parent directory" })
 		map("n", "q", actions.close.callback, { buffer = ev.buf, desc = "Close oil" })
+		-- <C-c> closes oil and drops unsaved edits, so ask first when there are any.
+		map("n", "<C-c>", function()
+			if vim.bo[ev.buf].modified and vim.fn.confirm("Discard oil changes and close?", "&Yes\n&No", 2) ~= 1 then
+				return
+			end
+			actions.close.callback()
+		end, { buffer = ev.buf, desc = "Close oil (confirm if changed)" })
 	end,
 })
 
@@ -130,7 +137,7 @@ map("n", "<leader>gB", function()
 end, { desc = "Blame buffer" })
 
 -- Stage the whole buffer; when nothing is left to stage, unstage it instead.
-map("n", "<leader>gs", function()
+map("n", "<leader>gH", function()
 	if #(gs.get_hunks() or {}) > 0 then
 		gs.stage_buffer()
 	else
