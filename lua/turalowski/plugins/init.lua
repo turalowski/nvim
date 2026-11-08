@@ -42,6 +42,7 @@ vim.pack.add({
 	"https://github.com/folke/which-key.nvim",
 	"https://github.com/szw/vim-maximizer",
 	"https://github.com/windwp/nvim-ts-autotag",
+	"https://github.com/kylechui/nvim-surround",
 })
 
 require("turalowski.plugins.ui")
@@ -53,4 +54,5 @@ require("turalowski.plugins.formatting")
 require("turalowski.plugins.git")
 require("turalowski.plugins.ai")
 require("turalowski.plugins.tools")
+require("turalowski.plugins.editing")
 require("turalowski.plugins.keymaps")
