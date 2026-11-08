@@ -37,6 +37,7 @@ vim.pack.add({
 	"https://github.com/esmuellert/codediff.nvim",
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 	"https://github.com/nvim-mini/mini.pairs",
+	"https://github.com/coder/claudecode.nvim",
 })
 
 require("turalowski.plugins.ui")
@@ -46,4 +47,5 @@ require("turalowski.plugins.completion")
 require("turalowski.plugins.lsp")
 require("turalowski.plugins.formatting")
 require("turalowski.plugins.git")
+require("turalowski.plugins.ai")
 require("turalowski.plugins.keymaps")

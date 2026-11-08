@@ -226,3 +226,8 @@ map("n", "<leader>dH", "<Cmd>CodeDiff history<CR>", { desc = "Repo history" })
 map("n", ";g", function()
 	turalowski.lazygit.open()
 end, { desc = "Open lazygit" })
+
+-- Claude Code (claudecode.nvim).
+map("n", "<leader>ac", "<Cmd>ClaudeCode<CR>", { desc = "Toggle Claude" })
+map("x", "<leader>as", "<Cmd>ClaudeCodeSend<CR>", { desc = "Send selection to Claude" })
+map("n", "<leader>ab", "<Cmd>ClaudeCodeAdd %<CR>", { desc = "Add buffer to Claude" })

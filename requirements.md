@@ -386,7 +386,6 @@ Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygi
 - Use `szw/vim-maximizer` to control the window size.
   - `<leader>sm` should be shortcut to maximize / normalize the window size.
 - Use `windwp/nvim-ts-autotag` to autoclose html tags.
-- Use `kylechui/nvim-surround` for surroundings. Use default shortcuts.
 
 ## 8.2 Better surrounding
 
