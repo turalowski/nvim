@@ -45,6 +45,7 @@ vim.pack.add({
 	"https://github.com/kylechui/nvim-surround",
 	"https://github.com/nvim-lua/plenary.nvim",
 	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
+	"https://github.com/numToStr/Comment.nvim",
 })
 
 require("turalowski.plugins.ui")
