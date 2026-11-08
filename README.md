@@ -13,6 +13,8 @@ A Neovim 0.12 config built from a written spec, using Neovim's own features wher
 - `ripgrep` and `fd`, for search and the file finder
 - `lazygit` and `git-delta`, for the git UI and its diffs
 - A [Nerd Font](https://www.nerdfonts.com/) (this config uses PlemolJP Console NF)
+- Optional: the `claude` CLI, for the Claude Code integration
+- Optional: tmux, with the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) bindings in `~/.tmux.conf`, to move between Neovim and tmux panes
 
 ## Install
 
@@ -28,11 +30,14 @@ On the first start, `vim.pack` installs the plugins, Treesitter builds its parse
 | Area       | Plugins and features                                                                 |
 | ---------- | ------------------------------------------------------------------------------------ |
 | Look       | Catppuccin (transparent), lualine, custom tabline, incline window labels, mini.icons |
-| Navigation | snacks.nvim picker, oil.nvim file explorer                                           |
+| Navigation | snacks.nvim picker, oil.nvim file explorer, harpoon                                  |
 | Syntax     | nvim-treesitter (main branch), todo-comments, nvim-highlight-colors                  |
 | LSP        | Mason, nvim-lspconfig, blink.cmp, mini.pairs                                         |
 | Formatting | conform.nvim, format on save (oxfmt, prettierd, prettier, stylua, shfmt)             |
 | Git        | gitsigns, codediff.nvim, lazygit through snacks.nvim                                 |
+| Agents     | claudecode.nvim, copy file path with line                                            |
+| Editing    | nvim-surround, Comment.nvim, nvim-ts-autotag                                         |
+| Tools      | vim-tmux-navigator, which-key, vim-maximizer                                         |
 
 ## Layout
 
@@ -65,7 +70,13 @@ Leader is **Space**. The full list, with notes, is in [`requirements.md`](requir
 | `<leader>dv`                | Toggle the diff view                                          |
 | `]h` / `[h`                 | Next / previous git hunk                                      |
 | `<leader>li` / `<leader>fi` | Copy relative / absolute `path#L<line>`                       |
+| `<leader>ac` / `<leader>as` | Toggle Claude / send the selection to Claude                  |
+| `<leader>ab`                | Add the buffer to Claude                                      |
+| `<leader>ha` / `<leader>hl` | Harpoon: add the file / list files                            |
+| `<leader>h1` – `<leader>h4` | Harpoon: go to file 1–4                                       |
+| `<C-h/j/k/l>`               | Move between windows and tmux panes                           |
+| `<leader>sm`                | Maximize / restore the window                                 |
 
-Commands: `:ToggleCompletion` (`!` for all buffers) and `:ToggleFormatter`.
+Commands: `:ToggleCompletion` (`!` for all buffers, `<leader>tc` for this buffer) and `:ToggleFormatter`.
 
 Some of these shortcuts are still new to me, and I'm getting used to them. In future, I may change some of them to my own taste.

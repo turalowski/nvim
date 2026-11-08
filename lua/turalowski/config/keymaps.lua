@@ -76,7 +76,6 @@ end
 
 map("n", "<leader>up", git_workflow, { desc = "Fast commit/push" })
 
--- Copy "path:L<line>" of the cursor position to the system clipboard.
 -- Copy "path#L<line>" to the system clipboard, for pointing an agent at the exact line (7.1).
 local function copy_path(modifier)
 	local text = vim.fn.expand("%" .. modifier) .. "#L" .. vim.fn.line(".")
