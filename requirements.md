@@ -209,6 +209,40 @@
 | `;n` | Shows notifications                | -                                                                      |
 | `;h` | Lists git hunks                    | -                                                                      |
 
+- The prompt takes fzf search syntax, with smartcase: lowercase ignores case, any capital makes it exact.
+
+| Syntax         | Matches                                | Comment                                    |
+| -------------- | -------------------------------------- | ------------------------------------------ |
+| `foo`          | Fuzzy match                            | -                                          |
+| `'foo`         | Exact match                            | -                                          |
+| `^foo`         | Starts with `foo`                      | -                                          |
+| `foo$`         | Ends with `foo`                        | -                                          |
+| `!foo`         | Does not contain `foo`                 | Combines with the others, like `!^foo`.    |
+| `foo bar`      | Both `foo` and `bar`, in any order     | -                                          |
+| `foo \| bar`   | Either `foo` or `bar`                  | -                                          |
+
+- Keys inside an open picker, in both insert and normal mode unless noted.
+
+| Keys                               | Action                                              | Comment                                            |
+| ---------------------------------- | --------------------------------------------------- | -------------------------------------------------- |
+| `<C-j>` / `<C-k>`                  | Moves down / up the list                            | `<C-n>` / `<C-p>` and the arrows do the same.      |
+| `<C-d>` / `<C-u>`                  | Scrolls the list down / up                          | -                                                  |
+| `<C-f>` / `<C-b>`                  | Scrolls the preview down / up                       | -                                                  |
+| `<CR>`                             | Opens the item                                      | -                                                  |
+| `<C-v>` / `<C-s>` / `<C-t>`        | Opens in a vertical split / split / new tab         | -                                                  |
+| `<S-CR>`                           | Picks a window to open the item in                  | -                                                  |
+| `<Tab>` / `<S-Tab>`                | Selects the item and moves down / up                | Selected items open or go to quickfix together.    |
+| `<C-a>`                            | Selects all items                                   | -                                                  |
+| `<C-q>`                            | Sends the selected, or all, items to quickfix       | -                                                  |
+| `<C-g>`                            | Toggles live grep and fuzzy filtering of results    | Insert mode only; in normal mode prints the path.  |
+| `<A-h>` / `<A-i>`                  | Toggles hidden / ignored files                      | -                                                  |
+| `<A-r>`                            | Toggles regex in grep                               | -                                                  |
+| `<A-p>` / `<A-m>`                  | Toggles the preview / maximizes the picker          | -                                                  |
+| `<A-w>`                            | Cycles focus between input, list, and preview       | -                                                  |
+| `<C-Up>` / `<C-Down>`              | Goes back / forward through past searches           | -                                                  |
+| `<C-r><C-w>`                       | Inserts the word under the cursor                   | Insert mode only.                                  |
+| `<Esc>`                            | Normal mode in the input, `<Esc>` again closes      | `<C-c>` closes straight from insert mode.          |
+
 ### 3.2 File explorer
 
 - oil.nvim replaces netrw and shows hidden files.
