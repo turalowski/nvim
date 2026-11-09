@@ -18,10 +18,10 @@ end, { desc = "Live grep, including hidden" })
 map("n", ";;", function()
 	Snacks.picker.resume()
 end, { desc = "Reopen last picker" })
-map("n", "\\\\", function()
+map("n", ";b", function()
 	Snacks.picker.buffers({ jump = { reuse_win = true } })
 end, { desc = "List open buffers" })
-map("n", ";e", function()
+map("n", ";d", function()
 	Snacks.picker.diagnostics()
 end, { desc = "List diagnostics" })
 map("n", ";n", function()
@@ -32,7 +32,7 @@ map("n", ";h", function()
 end, { desc = "List git hunks" })
 
 -- File explorer (oil).
-map("n", "sf", function()
+map("n", ";e", function()
 	require("oil").open_float(nil, { preview = {} })
 end, { desc = "Open oil in a float with preview" })
 
@@ -137,7 +137,7 @@ map("n", "<leader>gB", function()
 end, { desc = "Blame buffer" })
 
 -- Stage the whole buffer; when nothing is left to stage, unstage it instead.
-map("n", "<leader>gH", function()
+map("n", "<leader>gS", function()
 	if #(gs.get_hunks() or {}) > 0 then
 		gs.stage_buffer()
 	else
@@ -153,10 +153,10 @@ map("n", "[h", function()
 end, { desc = "Previous hunk" })
 
 -- stage_hunk unstages the hunk when it is already staged. In visual mode, only the selected lines.
-map("n", "<leader>gh", function()
+map("n", "<leader>gs", function()
 	gs.stage_hunk()
 end, { desc = "Stage / unstage hunk" })
-map("x", "<leader>gh", function()
+map("x", "<leader>gs", function()
 	gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, { desc = "Stage / unstage selected lines" })
 

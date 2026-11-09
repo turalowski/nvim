@@ -92,6 +92,17 @@
 - New splits open **below** and to the **right**.
 - Folds come from **Treesitter**, with `foldlevel` **99**.
   - Everything starts unfolded, and folds can still be closed by syntax.
+- Fold commands are mapped explicitly in `config/keymaps.lua`, on their default keys for now.
+  - They live in one place, so I can remap them later.
+
+| Keys             | Action                                                          | Notes |
+| ---------------- | --------------------------------------------------------------- | ----- |
+| `za`, `zo`, `zc` | Toggle, open, close the fold under the cursor                   | -     |
+| `zA`, `zO`, `zC` | Toggle, open, close the fold under the cursor and all inside it | -     |
+| `zR`, `zM`       | Open all folds, Close all folds                                 | -     |
+| `zv`             | Open just enough folds to show the cursor line                  | -     |
+| `zj`, `zk`       | Move to the start of the next fold, end of the previous fold    | -     |
+| `[z`, `]z`       | Move to the start, end of the current open fold                 | -     |
 
 ### 1.6 Messages
 
@@ -115,7 +126,7 @@
 | 'x'                                                                                        | Deletes without copying                                                                                          | -                                                   |
 | `<leader>nh`                                                                               | Clear search highlights                                                                                          | -                                                   |
 | `<leader>d`, `<leader>c`, `<leader>p`                                                      | Delete, change, and paste without touching the yank                                                              | The yanked text stays safe while editing around it. |
-| `dw`                                                                                       | Deletes the word backwards without copying                                                                       | -                                                   |
+| `dw`                                                                                       | Deletes the word without copying                                                                                 | -                                                   |
 | `+` / `-`                                                                                  | Increment and decrement numbers                                                                                  | -                                                   |
 | `<C-a>`                                                                                    | Selects all                                                                                                      | -                                                   |
 | `<leader>to`, `<leader>tx`, `<leader>tn` / `Tab`, `<leader>tp` / `Shift-Tab`, `<leader>tf` | Open new tab, Close current tab, Go next tab, To to previous tab, Open current buffer in new tab                 | -                                                   |
@@ -125,7 +136,7 @@
 | `<C-u>`                                                                                    | Keep cursor in the middle on page up                                                                             | -                                                   |
 | `n`                                                                                        | Keep cursor in the middle on highlight of next search item                                                       | -                                                   |
 | `N`                                                                                        | Keep cursor in the middle on highlight previous search item                                                      | -                                                   |
-| `<C-m>`                                                                                    | Jumps forward in the jump list                                                                                   | -                                                   |
+| `<C-i> / <C-o>`                                                                            | Jumps forward in the jump list                                                                                   | -                                                   |
 | `<leader>o` / `<leader>O`                                                                  | Open a line below or above without continuing a comment                                                          | -                                                   |
 | `<leader>up`                                                                               | Fast commit and push: asks for a message, then runs `git add .`, a signed `git commit -S`, and `git push`        | Aborts when the message is empty.                   |
 | `<leader>bx`, `<leader>bn`, `<leader>bp`, `<leader>bd`                                     | Close current buffer, Go to next buffer, Go to previous buffer, Closes every hidden buffer, except unsaved ones. | -                                                   |
@@ -193,8 +204,8 @@
 | `;f` | Finds files, including hidden ones | Dotfiles like `.github/` and `.env.example` are part ofd real projects | -   |
 | `;r` | Live-greps, including hidden files | -                                                                      |
 | `;;` | Reopens the last picker            | -                                                                      |
-| `\\` | Lists open buffers                 | Jumps to a window that already shows the buffer.                       |
-| `;e` | Lists diagnostics                  | -                                                                      |
+| `;b` | Lists open buffers                 | Jumps to a window that already shows the buffer.                       |
+| `;d` | Lists diagnostics                  | -                                                                      |
 | `;n` | Shows notifications                | -                                                                      |
 | `;h` | Lists git hunks                    | -                                                                      |
 
@@ -209,7 +220,7 @@
 
 | Keys | Action                                            | Notes                                               |
 | ---- | ------------------------------------------------- | --------------------------------------------------- |
-| `sf` | Opens oil as a centered float with a live preview | At most **200** columns wide, with rounded corners. |
+| `;e` | Opens oil as a centered float with a live preview | At most **200** columns wide, with rounded corners. |
 | `h`  | Goes to the parent directory                      | -                                                   |
 | `q`  | Closes oil                                        | -                                                   |
 
@@ -323,8 +334,8 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 | `<leader>gb` | blames the line                                                          | -                                                           |
 | `<leader>gB` | blames the buffer                                                        | -                                                           |
 | `<leader>go` | Opens the file as of the commit that last touched the line, in a new tab | Shows the next of an old change without leaving the editor. |
-| `<leader>gH` | Stages the buffer, or unstages it if nothing is left to stage            | -                                                           |
-| `<leader>gh` | Stages or unstages the hunk                                              | -                                                           |
+| `<leader>gS` | Stages the buffer, or unstages it if nothing is left to stage            | -                                                           |
+| `<leader>gs` | Stages or unstages the hunk                                              | -                                                           |
 | `]h` / `[h`  | Goes to the next / previous hunk                                         | -                                                           |
 
 ### 6.2 Diff view

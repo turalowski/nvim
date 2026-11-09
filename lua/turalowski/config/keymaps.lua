@@ -10,7 +10,7 @@ map({ "n", "x" }, "<leader>d", '"_d', { desc = "Delete without copying" })
 map({ "n", "x" }, "<leader>c", '"_c', { desc = "Change without copying" })
 map("x", "<leader>p", '"_dP', { desc = "Paste over selection, keep yank" })
 
-map("n", "dw", '"_db', { desc = "Delete word backwards without copying" })
+map("n", "dw", '"_dw', { desc = "Delete word without copying" })
 
 map("n", "+", "<C-a>", { desc = "Increment number" })
 map("n", "-", "<C-x>", { desc = "Decrement number" })
@@ -32,6 +32,21 @@ map("n", "<leader>ss", "<C-w>s", { desc = "Split horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<leader>sx", "<Cmd>close<CR>", { desc = "Close current split" })
 
+-- Folds (1.5), mapped on their default keys so they can be remapped from here.
+map("n", "za", "za", { desc = "Toggle fold" })
+map("n", "zo", "zo", { desc = "Open fold" })
+map("n", "zc", "zc", { desc = "Close fold" })
+map("n", "zA", "zA", { desc = "Toggle fold recursively" })
+map("n", "zO", "zO", { desc = "Open fold recursively" })
+map("n", "zC", "zC", { desc = "Close fold recursively" })
+map("n", "zR", "zR", { desc = "Open all folds" })
+map("n", "zM", "zM", { desc = "Close all folds" })
+map("n", "zv", "zv", { desc = "Open folds to show cursor line" })
+map({ "n", "x", "o" }, "zj", "zj", { desc = "Next fold start" })
+map({ "n", "x", "o" }, "zk", "zk", { desc = "Previous fold end" })
+map({ "n", "x", "o" }, "[z", "[z", { desc = "Current fold start" })
+map({ "n", "x", "o" }, "]z", "]z", { desc = "Current fold end" })
+
 map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to window below" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
@@ -42,10 +57,6 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Page down, keep cursor centered" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Page up, keep cursor centered" })
 map("n", "n", "nzzzv", { desc = "Next match, keep cursor centered" })
 map("n", "N", "Nzzzv", { desc = "Previous match, keep cursor centered" })
-
--- Tab and <C-i> send the same key in most terminals, and Tab now switches tabs,
--- so jumping forward in the jump list moves to <C-m>.
-map("n", "<C-m>", "<C-i>", { desc = "Jump forward in jump list" })
 
 -- Open a new line, then clear it with cc so a comment leader is not carried over.
 map("n", "<leader>o", 'o<Esc>"_cc', { desc = "Open line below without comment" })

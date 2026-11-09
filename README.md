@@ -58,10 +58,10 @@ Leader is **Space**. The full list, with notes, is in [`requirements.md`](requir
 | Keys                        | Action                                                        |
 | --------------------------- | ------------------------------------------------------------- |
 | `;f` / `;r`                 | Find files / live grep, hidden files included                 |
-| `\\`                        | Open buffers                                                  |
+| `;b`                        | Open buffers                                                  |
 | `;;`                        | Reopen the last picker                                        |
-| `;e` / `;n` / `;h`          | Diagnostics / notifications / git hunks                       |
-| `sf`                        | File explorer (oil) in a float                                |
+| `;d` / `;n` / `;h`          | Diagnostics / notifications / git hunks                       |
+| `;e`                        | File explorer (oil) in a float                                |
 | `gd` / `gr` / `gt` / `gI`   | Definition / references / type definition / source definition |
 | `K` / `E`                   | Hover docs / diagnostic under the cursor                      |
 | `<leader>ca` / `<leader>cr` | Code actions / rename                                         |
