@@ -37,4 +37,12 @@ function M.recording()
 	return reg == "" and "" or ("recording @" .. reg)
 end
 
+-- Names of the language servers attached to the current buffer, empty when none is.
+function M.lsp_clients()
+	local names = vim.tbl_map(function(client)
+		return client.name
+	end, vim.lsp.get_clients({ bufnr = 0 }))
+	return table.concat(names, ", ")
+end
+
 return M

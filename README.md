@@ -57,7 +57,7 @@ Leader is **Space**. The full list, with notes, is in [`requirements.md`](requir
 
 | Keys                        | Action                                                        |
 | --------------------------- | ------------------------------------------------------------- |
-| `;f` / `;r`                 | Find files / live grep, hidden files included                 |
+| `;f` / `;s`                 | Find files / live grep, hidden files included                 |
 | `;b`                        | Open buffers                                                  |
 | `;;`                        | Reopen the last picker                                        |
 | `;d` / `;n` / `;h`          | Diagnostics / notifications / git hunks                       |

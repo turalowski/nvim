@@ -94,6 +94,7 @@
   - Everything starts unfolded, and folds can still be closed by syntax.
 - Fold commands are mapped explicitly in `config/keymaps.lua`, on their default keys for now.
   - They live in one place, so I can remap them later.
+- Split sizes use the built-in `<C-w>` keys. Nothing is mapped for them yet.
 
 | Keys             | Action                                                          | Notes |
 | ---------------- | --------------------------------------------------------------- | ----- |
@@ -103,6 +104,14 @@
 | `zv`             | Open just enough folds to show the cursor line                  | -     |
 | `zj`, `zk`       | Move to the start of the next fold, end of the previous fold    | -     |
 | `[z`, `]z`       | Move to the start, end of the current open fold                 | -     |
+
+| Keys                | Action                                     | Notes                              |
+| ------------------- | ------------------------------------------ | ---------------------------------- |
+| `<C-w>>`, `<C-w><`  | Make the split wider, narrower by 1 column | A count sets the step: `10<C-w>>`. |
+| `<C-w>+`, `<C-w>-`  | Make the split taller, shorter by 1 line   | A count sets the step: `5<C-w>+`.  |
+| `<C-w>\|`, `<C-w>_` | Make the split as wide, tall as possible   | -                                  |
+| `<C-w>=`            | Make all splits equal size                 | Same as `<leader>se`.              |
+| `<C-w>o`            | Close every other split                    | -                                  |
 
 ### 1.6 Messages
 
@@ -171,10 +180,12 @@
   - b: git branch
   - c: project root name (only when it differs from cwd), filetype icon, pretty file path
   - x: macro recording register, diagnostics, git diff counts
+    - Then the names of the language servers attached to the buffer, like `ts_ls`. Hidden when none is attached.
   - y: progress
   - z: line:column
 - The project root is found be searching upward for `.git`, `lua`, `package.json`, `Makefile`, `Cargo.toml`, `go.mod`, or `pyproject.toml`.
   - Refreshes on cursor move and macro start/stop.
+  - Also refreshes when a language server attaches or detaches.
 - The recording indicator replaces the hidden command line.
 
 ### 2.5 Window labels
@@ -202,7 +213,7 @@
 | Keys | Action                             | Comment                                                                |
 | ---- | ---------------------------------- | ---------------------------------------------------------------------- |
 | `;f` | Finds files, including hidden ones | Dotfiles like `.github/` and `.env.example` are part ofd real projects | -   |
-| `;r` | Live-greps, including hidden files | -                                                                      |
+| `;s` | Live-greps, including hidden files | -                                                                      |
 | `;;` | Reopens the last picker            | -                                                                      |
 | `;b` | Lists open buffers                 | Jumps to a window that already shows the buffer.                       |
 | `;d` | Lists diagnostics                  | -                                                                      |
@@ -211,37 +222,39 @@
 
 - The prompt takes fzf search syntax, with smartcase: lowercase ignores case, any capital makes it exact.
 
-| Syntax         | Matches                                | Comment                                    |
-| -------------- | -------------------------------------- | ------------------------------------------ |
-| `foo`          | Fuzzy match                            | -                                          |
-| `'foo`         | Exact match                            | -                                          |
-| `^foo`         | Starts with `foo`                      | -                                          |
-| `foo$`         | Ends with `foo`                        | -                                          |
-| `!foo`         | Does not contain `foo`                 | Combines with the others, like `!^foo`.    |
-| `foo bar`      | Both `foo` and `bar`, in any order     | -                                          |
-| `foo \| bar`   | Either `foo` or `bar`                  | -                                          |
+| Syntax       | Matches                            | Comment                                 |
+| ------------ | ---------------------------------- | --------------------------------------- |
+| `foo`        | Fuzzy match                        | -                                       |
+| `'foo`       | Exact match                        | -                                       |
+| `^foo`       | Starts with `foo`                  | -                                       |
+| `foo$`       | Ends with `foo`                    | -                                       |
+| `!foo`       | Does not contain `foo`             | Combines with the others, like `!^foo`. |
+| `foo bar`    | Both `foo` and `bar`, in any order | -                                       |
+| `foo \| bar` | Either `foo` or `bar`              | -                                       |
 
 - Keys inside an open picker, in both insert and normal mode unless noted.
 
-| Keys                               | Action                                              | Comment                                            |
-| ---------------------------------- | --------------------------------------------------- | -------------------------------------------------- |
-| `<C-j>` / `<C-k>`                  | Moves down / up the list                            | `<C-n>` / `<C-p>` and the arrows do the same.      |
-| `<C-d>` / `<C-u>`                  | Scrolls the list down / up                          | -                                                  |
-| `<C-f>` / `<C-b>`                  | Scrolls the preview down / up                       | -                                                  |
-| `<CR>`                             | Opens the item                                      | -                                                  |
-| `<C-v>` / `<C-s>` / `<C-t>`        | Opens in a vertical split / split / new tab         | -                                                  |
-| `<S-CR>`                           | Picks a window to open the item in                  | -                                                  |
-| `<Tab>` / `<S-Tab>`                | Selects the item and moves down / up                | Selected items open or go to quickfix together.    |
-| `<C-a>`                            | Selects all items                                   | -                                                  |
-| `<C-q>`                            | Sends the selected, or all, items to quickfix       | -                                                  |
-| `<C-g>`                            | Toggles live grep and fuzzy filtering of results    | Insert mode only; in normal mode prints the path.  |
-| `<A-h>` / `<A-i>`                  | Toggles hidden / ignored files                      | -                                                  |
-| `<A-r>`                            | Toggles regex in grep                               | -                                                  |
-| `<A-p>` / `<A-m>`                  | Toggles the preview / maximizes the picker          | -                                                  |
-| `<A-w>`                            | Cycles focus between input, list, and preview       | -                                                  |
-| `<C-Up>` / `<C-Down>`              | Goes back / forward through past searches           | -                                                  |
-| `<C-r><C-w>`                       | Inserts the word under the cursor                   | Insert mode only.                                  |
-| `<Esc>`                            | Normal mode in the input, `<Esc>` again closes      | `<C-c>` closes straight from insert mode.          |
+| Keys                  | Action                                           | Comment                                           |
+| --------------------- | ------------------------------------------------ | ------------------------------------------------- |
+| `<C-j>` / `<C-k>`     | Moves down / up the list                         | `<C-n>` / `<C-p>` and the arrows do the same.     |
+| `<C-d>` / `<C-u>`     | Scrolls the list down / up                       | -                                                 |
+| `<C-f>` / `<C-b>`     | Scrolls the preview down / up                    | -                                                 |
+| `<CR>`                | Opens the item                                   | -                                                 |
+| `;v` / `;h` / `;o`    | Opens in a vertical split / split / new tab      | -                                                 |
+| `<S-CR>`              | Picks a window to open the item in               | -                                                 |
+| `<Tab>` / `<S-Tab>`   | Selects the item and moves down / up             | Selected items open or go to quickfix together.   |
+| `<C-a>`               | Selects all items                                | -                                                 |
+| `<C-q>`               | Sends the selected, or all, items to quickfix    | -                                                 |
+| `<C-g>`               | Toggles live grep and fuzzy filtering of results | Insert mode only; in normal mode prints the path. |
+| `<A-h>` / `<A-i>`     | Toggles hidden / ignored files                   | -                                                 |
+| `<A-r>`               | Toggles regex in grep                            | -                                                 |
+| `<A-p>` / `<A-m>`     | Toggles the preview / maximizes the picker       | -                                                 |
+| `<A-w>`               | Cycles focus between input, list, and preview    | -                                                 |
+| `<C-Up>` / `<C-Down>` | Goes back / forward through past searches        | -                                                 |
+| `<C-r><C-w>`          | Inserts the word under the cursor                | Insert mode only.                                 |
+| `<Esc>`               | Normal mode in the input, `<Esc>` again closes   | `<C-c>` closes straight from insert mode.         |
+
+TODO: `;v` / `;h` / `;o` also work in insert mode, so a `;` typed in the search waits `timeoutlen` before it shows, and `;v`, `;h`, `;o` can't be searched. If it gets in the way, make them normal mode only.
 
 ### 3.2 File explorer
 

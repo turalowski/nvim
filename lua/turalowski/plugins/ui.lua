@@ -36,7 +36,7 @@ require("tiny-cmdline").setup({
 local statusline = turalowski.statusline
 local refresh_events = vim.list_extend(
 	vim.deepcopy(require("lualine.config").get_config().options.refresh.events),
-	{ "RecordingEnter", "RecordingLeave" }
+	{ "RecordingEnter", "RecordingLeave", "LspAttach", "LspDetach" }
 )
 require("lualine").setup({
 	options = {
@@ -64,6 +64,7 @@ require("lualine").setup({
 				},
 			},
 			"diff",
+			statusline.lsp_clients,
 		},
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
@@ -104,6 +105,31 @@ require("snacks").setup({
 	statuscolumn = { enabled = true },
 	words = { enabled = true },
 	scroll = { enabled = false },
-	picker = { enabled = true },
+	picker = {
+		enabled = true,
+		-- Open in a vertical split, split, or new tab with ;v, ;h, ;o instead of <C-v>, <C-s>, <C-t>.
+		win = {
+			input = {
+				keys = {
+					["<c-v>"] = false,
+					["<c-s>"] = false,
+					["<c-t>"] = false,
+					[";v"] = { "edit_vsplit", mode = { "i", "n" } },
+					[";h"] = { "edit_split", mode = { "i", "n" } },
+					[";o"] = { "tab", mode = { "i", "n" } },
+				},
+			},
+			list = {
+				keys = {
+					["<c-v>"] = false,
+					["<c-s>"] = false,
+					["<c-t>"] = false,
+					[";v"] = "edit_vsplit",
+					[";h"] = "edit_split",
+					[";o"] = "tab",
+				},
+			},
+		},
+	},
 	lazygit = turalowski.lazygit.snacks,
 })
