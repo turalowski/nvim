@@ -427,6 +427,7 @@ Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygi
 ### 7.2 Claude Code
 
 - Use `coder/claudecode.nvim` for Claude Code integration.
+  - The Claude window uses the editor's background, focused or not.
 
 | Keys         | Action         | Notes |
 | ------------ | -------------- | ----- |
