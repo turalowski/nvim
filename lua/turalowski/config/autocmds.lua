@@ -27,3 +27,17 @@ vim.api.nvim_create_autocmd("WinLeave", {
 		vim.wo.cursorline = false
 	end,
 })
+
+-- When you come back to the editor (from Claude's terminal, another tmux pane or app),
+-- check for files changed on disk. With 'autoread' on, unmodified buffers reload;
+-- buffers with unsaved edits are left alone and you get a warning instead.
+vim.api.nvim_create_autocmd({ "FocusGained", "TermLeave", "BufEnter", "WinEnter", "CursorHold" }, {
+	group = group,
+	desc = "Reload files changed outside Neovim",
+	callback = function()
+		-- checktime isn't allowed in the command-line window.
+		if vim.fn.getcmdwintype() == "" then
+			vim.cmd.checktime()
+		end
+	end,
+})
