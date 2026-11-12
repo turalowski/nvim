@@ -439,6 +439,7 @@ Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygi
 ### 8.1 Tools
 
 - Use `christoomey/vim-tmux-navigator` to move between neovim and tmux windows.
+  - `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>` should also work in terminal mode, so moving out of a terminal doesn't send the key to the running process.
 - Use `folke/which-key.nvim` to show shortcuts.
   - It should use 500ms timeout length.
 - Use `szw/vim-maximizer` to control the window size.
