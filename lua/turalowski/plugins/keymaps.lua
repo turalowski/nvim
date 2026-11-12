@@ -234,10 +234,12 @@ map("n", "<leader>ab", "<Cmd>ClaudeCodeAdd %<CR>", { desc = "Add buffer to Claud
 
 -- Window moves that also cross into tmux panes (vim-tmux-navigator).
 -- Replaces the plain <C-w> moves from config/keymaps.lua.
-map("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", { desc = "Move to left window or tmux pane" })
-map("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", { desc = "Move to window or tmux pane below" })
-map("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", { desc = "Move to window or tmux pane above" })
-map("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", { desc = "Move to right window or tmux pane" })
+-- Also mapped in terminal mode so moving out of a terminal (e.g. Claude Code)
+-- doesn't send the key to the running process.
+map({ "n", "t" }, "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", { desc = "Move to left window or tmux pane" })
+map({ "n", "t" }, "<C-j>", "<Cmd>TmuxNavigateDown<CR>", { desc = "Move to window or tmux pane below" })
+map({ "n", "t" }, "<C-k>", "<Cmd>TmuxNavigateUp<CR>", { desc = "Move to window or tmux pane above" })
+map({ "n", "t" }, "<C-l>", "<Cmd>TmuxNavigateRight<CR>", { desc = "Move to right window or tmux pane" })
 
 -- Maximize the window, or restore the layout (vim-maximizer).
 map("n", "<leader>sm", "<Cmd>MaximizerToggle<CR>", { desc = "Maximize / restore window" })
