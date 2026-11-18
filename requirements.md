@@ -128,7 +128,6 @@
 - Yanked text flashes briefly.
 - Only the active window shows the cursorline.
 - Files changed on disk (e.g. by Claude) reload when I return to the editor, unless the buffer has unsaved changes.
-- Inside tmux, the editor asks tmux for extended keys on start and resume, and turns them off on suspend and exit, so `Ctrl-I` and `Tab` reach the editor as different keys.
 
 ### 1.8 Core Keymaps
 

@@ -41,29 +41,3 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermLeave", "BufEnter", "WinEnter"
 		end
 	end,
 })
-
--- Terminals send the same byte for Ctrl-I and Tab, so mapping Tab also takes over Ctrl-I.
--- Inside tmux Neovim doesn't ask for extended keys itself, so ask for xterm's
--- modifyOtherKeys mode 2 (ESC[>4;2m) to get them as distinct keys. Turn it off (ESC[>4;0m)
--- when leaving, or the shell would receive the encoded keys.
-if vim.env.TMUX then
-	local function extended_keys(on)
-		pcall(vim.api.nvim_ui_send, on and "\27[>4;2m" or "\27[>4;0m")
-	end
-
-	vim.api.nvim_create_autocmd({ "UIEnter", "VimResume" }, {
-		group = group,
-		desc = "Ask tmux for extended keys",
-		callback = function()
-			extended_keys(true)
-		end,
-	})
-
-	vim.api.nvim_create_autocmd({ "VimLeavePre", "VimSuspend" }, {
-		group = group,
-		desc = "Give tmux back plain keys",
-		callback = function()
-			extended_keys(false)
-		end,
-	})
-end
