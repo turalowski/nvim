@@ -36,7 +36,7 @@ require("tiny-cmdline").setup({
 local statusline = turalowski.statusline
 local refresh_events = vim.list_extend(
 	vim.deepcopy(require("lualine.config").get_config().options.refresh.events),
-	{ "RecordingEnter", "RecordingLeave", "LspAttach", "LspDetach" }
+	{ "RecordingEnter", "RecordingLeave" }
 )
 require("lualine").setup({
 	options = {
@@ -64,7 +64,7 @@ require("lualine").setup({
 				},
 			},
 			"diff",
-			statusline.lsp_clients,
+			{ "filetype", icons_enabled = false },
 		},
 		lualine_y = { "progress" },
 		lualine_z = { "location" },

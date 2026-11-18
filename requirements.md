@@ -128,6 +128,7 @@
 - Yanked text flashes briefly.
 - Only the active window shows the cursorline.
 - Files changed on disk (e.g. by Claude) reload when I return to the editor, unless the buffer has unsaved changes.
+- Inside tmux, the editor asks tmux for extended keys on start and resume, and turns them off on suspend and exit, so `Ctrl-I` and `Tab` reach the editor as different keys.
 
 ### 1.8 Core Keymaps
 
@@ -139,7 +140,7 @@
 | `dw`                                                                                       | Deletes the word without copying                                                                                 | -                                                   |
 | `+` / `-`                                                                                  | Increment and decrement numbers                                                                                  | -                                                   |
 | `<C-a>`                                                                                    | Selects all                                                                                                      | -                                                   |
-| `<leader>to`, `<leader>tx`, `<leader>tn` / `Tab`, `<leader>tp` / `Shift-Tab`, `<leader>tf` | Open new tab, Close current tab, Go next tab, To to previous tab, Open current buffer in new tab                 | -                                                   |
+| `<leader>to`, `<leader>tx`, `<leader>tn`, `<leader>tp` / `Shift-Tab`, `<leader>tf` | Open new tab, Close current tab, Go next tab, To to previous tab, Open current buffer in new tab                 | -                                                   |
 | `<leader>sv`, `<leader>ss`, `<leader>se`, `<leader>sx`                                     | Split vertical, Split horizontal, Make splits equal size, Close current split                                    | -                                                   |
 | `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>`                                                         | Move between windows                                                                                             | -                                                   |
 | `<C-d>`                                                                                    | Keep cursor in the middle on page down                                                                           | -                                                   |
@@ -181,7 +182,7 @@
   - b: git branch
   - c: project root name (only when it differs from cwd), filetype icon, pretty file path
   - x: macro recording register, diagnostics, git diff counts
-    - Then the names of the language servers attached to the buffer, like `ts_ls`. Hidden when none is attached.
+    - Then the filetype as text, like `typescriptreact`.
   - y: progress
   - z: line:column
 - The project root is found be searching upward for `.git`, `lua`, `package.json`, `Makefile`, `Cargo.toml`, `go.mod`, or `pyproject.toml`.
@@ -352,7 +353,7 @@ Comment: In future, I will fix the issue related to the `TodoQuickFix`. For now,
 | ---------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `gd`                   | Go to definition                                                | Through the picker, like `gD`, `gt`, and `gr`.                                            |
 | `gD`                   | Goes to the declaration                                         | -                                                                                         |
-| `gt`                   | Go to type definition                                           | Replaces "next tab", which stays on `Tab` and `<leader>tn`. Built-in: `grt`.              |
+| `gt`                   | Go to type definition                                           | Replaces "next tab", which stays on `<leader>tn`. Built-in: `grt`.              |
 | `gr`                   | List references                                                 | Fires instantly; the built-in `grn`, `gra`, `grr`, `gri`, `grt`, `grx` keys are not used. |
 | `gI`                   | Goes to the source definition in TypeScript, the implementation | -                                                                                         |
 | `;c`                   | Lists incoming calls                                            | -                                                                                         |
