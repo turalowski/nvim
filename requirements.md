@@ -435,6 +435,13 @@ Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygi
 | `<leader>ac` | Toggle Claude  | -     |
 | `<leader>as` | Send Selection | -     |
 | `<leader>ab` | Add buffer     | -     |
+| `<leader>af` | Fix typos      | Whole buffer in normal mode, the selection in visual mode. |
+
+- `:FixTypos` sends the current buffer, or a range, to Claude Code and replaces it with a typo-fixed version. The command lives in `config/commands.lua`
+  - It runs `claude -p` with Sonnet and no tools, in the background, so the editor doesn't freeze.
+  - Only spelling mistakes and typos change. Wording, formatting, and code stay as they are.
+  - If the buffer changes while Claude is checking, the result is dropped.
+  - The fix is one undo step, so `u` reverts it.
 
 ## 8 Extras
 

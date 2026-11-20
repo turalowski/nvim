@@ -231,6 +231,8 @@ end, { desc = "Open lazygit" })
 map("n", "<leader>ac", "<Cmd>ClaudeCode<CR>", { desc = "Toggle Claude" })
 map("x", "<leader>as", "<Cmd>ClaudeCodeSend<CR>", { desc = "Send selection to Claude" })
 map("n", "<leader>ab", "<Cmd>ClaudeCodeAdd %<CR>", { desc = "Add buffer to Claude" })
+map("n", "<leader>af", "<Cmd>FixTypos<CR>", { desc = "Fix typos in buffer" })
+map("x", "<leader>af", ":FixTypos<CR>", { desc = "Fix typos in selection" })
 
 -- Window moves that also cross into tmux panes (vim-tmux-navigator).
 -- Replaces the plain <C-w> moves from config/keymaps.lua.
