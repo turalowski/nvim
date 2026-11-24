@@ -13,6 +13,18 @@ vim.api.nvim_create_user_command("ToggleFormatter", function()
 	vim.notify(("Format on save %s for this buffer."):format(vim.b.disable_autoformat and "off" or "on"))
 end, { desc = "Toggle format on save for this buffer" })
 
+-- :ErrorMessages opens the message history in a scratch buffer, so errors can be yanked
+-- (the ui2 pager can't be selected). The buffer is wiped when closed and never asks to save.
+vim.api.nvim_create_user_command("ErrorMessages", function()
+	local lines = vim.split(vim.fn.execute("messages"), "\n", { plain = true, trimempty = true })
+	vim.cmd.enew()
+	vim.bo.buftype = "nofile"
+	vim.bo.bufhidden = "wipe"
+	vim.bo.swapfile = false
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+	vim.cmd.normal({ "G", bang = true })
+end, { desc = "Open message history in a scratch buffer" })
+
 -- :FixTypos sends the buffer (or a range) to Claude Code and replaces it with a
 -- typo-fixed version. The edit is one undo step, so `u` reverts it.
 local fix_typos_prompt = [[

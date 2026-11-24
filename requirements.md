@@ -122,6 +122,8 @@
   - Output of a command I type goes to the command line too, whatever its kind. It expands over the bottom of the screen until the next day, and "Enter" moves it into the pager.
   - `tiny-cmdline.nvim` shows the `:` command line as a floating box centered left to right, **20%** from the top. It's set up in `plugins/ui.lua`
     - With `cmdheight` 0 the command line needs somewhere to appear, and near the top is where the eyes already are.
+- `:ErrorMessages` opens the message history (`:messages`) in a new scratch buffer, so errors can be copied. The command lives in `config/commands.lua`
+  - The buffer isn't a file, so closing it doesn't ask to save.
 
 ### 1.7 Autocmds
 
