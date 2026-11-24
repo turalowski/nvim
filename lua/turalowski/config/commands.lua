@@ -16,9 +16,11 @@ end, { desc = "Toggle format on save for this buffer" })
 -- :FixTypos sends the buffer (or a range) to Claude Code and replaces it with a
 -- typo-fixed version. The edit is one undo step, so `u` reverts it.
 local fix_typos_prompt = [[
-You are a proofreader. Fix spelling mistakes and obvious typos in the text you are given.
-Do not change wording, grammar, style, punctuation, formatting, whitespace, indentation,
-code, identifiers, URLs, or anything that is not a typo.
+You are a proofreader. Fix spelling and grammar mistakes in the text you are given,
+such as misspelled words, missing or doubled words, wrong articles, and wrong word forms.
+Make the smallest change that fixes each mistake. Do not rephrase, restyle, or reorder
+sentences, and do not change formatting, whitespace, indentation, code, identifiers, URLs,
+or anything that is not a mistake.
 Output only the corrected text, exactly once, with no explanation and no code fences.
 If there is nothing to fix, output the text unchanged.]]
 
