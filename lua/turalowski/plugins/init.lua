@@ -6,8 +6,14 @@ local pack_builds = {
 	["nvim-treesitter"] = function()
 		vim.cmd("TSUpdate")
 	end,
-	["markdown-preview.nvim"] = function()
-		vim.fn["mkdp#util#install"]()
+	-- Runs install.sh directly and waits: the plugin's own mkdp#util#install() starts it in a
+	-- terminal split, which doesn't finish when started from this hook at startup.
+	["markdown-preview.nvim"] = function(path)
+		local version = vim.json.decode(table.concat(vim.fn.readfile(path .. "/package.json"), "")).version
+		local res = vim.system({ "./install.sh", "v" .. version }, { cwd = path .. "/app" }):wait()
+		if res.code ~= 0 then
+			vim.notify("markdown-preview.nvim: server install failed\n" .. (res.stderr or ""), vim.log.levels.ERROR)
+		end
 	end,
 }
 
@@ -21,7 +27,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 			if not data.active then
 				vim.cmd.packadd(data.spec.name)
 			end
-			build()
+			build(data.path)
 		end
 	end,
 })
