@@ -1,15 +1,27 @@
--- Keep Treesitter parsers in sync with the plugin: update them whenever vim.pack installs or
--- updates nvim-treesitter. Defined before vim.pack.add so it also runs on the first install.
+-- Build steps that run whenever vim.pack installs or updates a plugin. Defined before
+-- vim.pack.add so they also run on the first install.
+-- nvim-treesitter: keep the parsers in sync with the plugin.
+-- markdown-preview.nvim: download the preview server it runs in the background.
+local pack_builds = {
+	["nvim-treesitter"] = function()
+		vim.cmd("TSUpdate")
+	end,
+	["markdown-preview.nvim"] = function()
+		vim.fn["mkdp#util#install"]()
+	end,
+}
+
 vim.api.nvim_create_autocmd("PackChanged", {
 	group = vim.api.nvim_create_augroup("turalowski_pack", { clear = true }),
-	desc = "Update Treesitter parsers after nvim-treesitter changes",
+	desc = "Run plugin build steps after install or update",
 	callback = function(ev)
 		local data = ev.data
-		if data.spec.name == "nvim-treesitter" and data.kind ~= "delete" then
+		local build = pack_builds[data.spec.name]
+		if build and data.kind ~= "delete" then
 			if not data.active then
-				vim.cmd.packadd("nvim-treesitter")
+				vim.cmd.packadd(data.spec.name)
 			end
-			vim.cmd("TSUpdate")
+			build()
 		end
 	end,
 })
@@ -46,6 +58,7 @@ vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 	"https://github.com/numToStr/Comment.nvim",
+	"https://github.com/iamcco/markdown-preview.nvim",
 })
 
 require("turalowski.plugins.ui")

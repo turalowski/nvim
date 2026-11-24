@@ -494,3 +494,10 @@ Comment: In future, `~/.config/lazygit/config.yml` will be added, and the lazygi
 | `[count]gbc`        | Toggles the number of lines given as a prefix-count using blockwise comment |            |
 | `gc[count]{motion}` | Toggles the region using linewise comment                                   | Op-pending |
 | `gb[count]{motion}` | Toggles the region using blockwise comment                                  | Op-pending |
+
+### 8.5 Markdown preview
+
+- Use `iamcco/markdown-preview.nvim` to preview Markdown in the browser.
+  - `:MarkdownPreview` opens the current Markdown buffer in the browser, and the page follows edits and the cursor live.
+  - `:MarkdownPreviewStop` closes it. The preview also closes when leaving the buffer.
+  - The plugin's server is installed when `vim.pack` installs or updates the plugin.
